@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2023 a las 01:43:20
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.1.12
+-- Tiempo de generación: 01-07-2023 a las 02:02:29
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -66,7 +66,7 @@ INSERT INTO `categoria` (`id_categoria`, `nombre_cat`, `descripcion_cat`, `estad
 (9, 'LOL', 'Indefinido', 1, '2023-06-09 03:06:42', '2023-06-09 03:06:42'),
 (10, 'dafdsf', 'Indefinido', 1, '2023-06-09 03:07:13', '2023-06-09 03:07:13'),
 (11, 'adsfasdfsdaf', 'Indefinido', 1, '2023-06-09 03:07:18', '2023-06-09 03:07:18'),
-(12, 'afdsfdsf', 'Indefinido', 1, '2023-06-09 03:07:24', '2023-06-09 03:07:24'),
+(12, 'afdsfdsf', 'Indefinido', 0, '2023-06-09 03:07:24', '2023-06-16 07:53:54'),
 (13, 'adsfadsf', 'Indefinido', 0, '2023-06-09 03:31:48', '2023-06-09 03:42:28'),
 (14, 'asdfadsfdsafdsa', 'Indefinido', 1, '2023-06-09 03:31:54', '2023-06-09 03:31:54'),
 (15, 'adsfadsfdsafdsaf', 'adsfdsafadsfdasf', 1, '2023-06-09 03:41:32', '2023-06-09 06:30:21'),
@@ -95,9 +95,9 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id_cliente`, `nombre_clie`, `apellido_clie`, `cedula_clie`, `telefono_clie`, `correo_clie`, `direccion_clie`, `created_at`, `updated_at`) VALUES
-(1, 'Carlos', 'Andrade', '0850587940', '1236547980', 'carlos.andrade66@gmail.com', 'Santo Domingo', NULL, NULL),
-(2, 'Jose', 'Espinoza', '0850587924', '9632587410', 'jose_espinoza2@gmail.com', 'La Union', '2023-06-12 19:20:00', '2023-06-12 19:20:00'),
-(3, 'Gabriela', 'Montero', '0123456789', '0231456789', 'gabriela_montero12@gmail.com', 'Santo Domingo', '2023-06-12 19:47:50', '2023-06-12 19:47:50'),
+(1, 'Juan', 'Andrade', '0850587940', '1236547980', 'carlos.andrade66@gmail.com', 'Santo Domingo', NULL, '2023-06-27 05:29:51'),
+(2, 'Ricardo', 'Pilozo', '0850587924', '9632587410', 'ricardopilozo@gmail.com', 'La Union', '2023-06-12 19:20:00', '2023-06-27 05:25:11'),
+(3, 'Gabriel', 'Montero', '0123456789', '0231456789', 'gabriela_montero12@gmail.com', 'Santo Domingo', '2023-06-12 19:47:50', '2023-06-27 05:25:26'),
 (4, 'Andres', 'Coronel', '9865321470', '3669885740', 'andres_coronel1@gmail.com', 'La Union', '2023-06-12 20:07:13', '2023-06-12 20:07:13'),
 (5, 'Maria', 'Peralta', '1236598763', '1225447888', 'mariaperalta22@gmail.com', 'Santo Domingo', '2023-06-12 20:09:55', '2023-06-12 20:09:55'),
 (6, 'XXXXXXXXXX', 'XXXXXXXXXX', '9999999999', '0000000000', 'xxxxxxxxxxxx@gmail.com', 'XXXXXXXXXX', '2023-06-14 05:50:07', '2023-06-14 05:50:07');
@@ -150,7 +150,15 @@ INSERT INTO `detalle` (`id_detalle`, `cantidad`, `valor_unitario`, `id_inventari
 (38, 5, 12, 8, 46, 8, '2023-06-14 05:56:57', '2023-06-14 05:56:57'),
 (39, 2, 14, 9, 47, 9, '2023-06-14 06:00:15', '2023-06-14 06:00:15'),
 (40, 5, 10, 6, 47, 6, '2023-06-14 06:00:16', '2023-06-14 06:00:16'),
-(41, 6, 8, 7, 47, 7, '2023-06-14 06:00:16', '2023-06-14 06:00:16');
+(41, 6, 8, 7, 47, 7, '2023-06-14 06:00:16', '2023-06-14 06:00:16'),
+(42, 3, 14, 9, 49, 9, '2023-06-16 05:32:23', '2023-06-16 05:32:23'),
+(43, 2, 9, 9, 50, 9, '2023-06-16 05:37:26', '2023-06-16 05:37:26'),
+(44, 1, 9, 9, 51, 9, '2023-06-16 06:41:34', '2023-06-16 06:41:34'),
+(45, 4, 7, 6, 51, 6, '2023-06-16 06:41:35', '2023-06-16 06:41:35'),
+(46, 1, 10, 6, 52, 6, '2023-06-16 06:44:53', '2023-06-16 06:44:53'),
+(47, 2, 7, 6, 53, 6, '2023-06-16 07:52:36', '2023-06-16 07:52:36'),
+(48, 1, 8, 7, 53, 7, '2023-06-16 07:52:37', '2023-06-16 07:52:37'),
+(50, 3, 10, 6, 55, 6, '2023-06-28 22:44:06', '2023-06-28 22:44:06');
 
 -- --------------------------------------------------------
 
@@ -206,10 +214,10 @@ INSERT INTO `inventario` (`id_inventario`, `estado_inv`, `cantidad_inventario`, 
 (3, 0, 11, '', 3, NULL, '2023-06-13 05:29:53'),
 (4, 0, 13, '', 4, NULL, '2023-06-07 09:25:09'),
 (5, 0, 20, '', 5, NULL, '2023-06-07 09:28:07'),
-(6, 0, 45, '', 6, NULL, '2023-06-14 06:00:16'),
-(7, 0, 7, '', 7, NULL, '2023-06-14 06:00:17'),
+(6, 0, 35, '', 6, NULL, '2023-06-28 22:44:07'),
+(7, 0, 6, '', 7, NULL, '2023-06-16 07:52:38'),
 (8, 1, 12, '', 8, NULL, '2023-06-14 05:56:57'),
-(9, 1, 38, '', 9, NULL, '2023-06-14 06:00:15'),
+(9, 1, 32, '', 9, NULL, '2023-06-16 06:41:35'),
 (10, 1, 101, '', 10, NULL, '2023-06-05 00:22:55'),
 (11, 1, 30, '', 11, NULL, NULL),
 (12, 1, 18, '', 12, NULL, NULL),
@@ -237,7 +245,8 @@ INSERT INTO `inventario` (`id_inventario`, `estado_inv`, `cantidad_inventario`, 
 (34, 1, 50, 'Mica para celulares Samsung A100', 35, '2023-06-04 06:42:32', '2023-06-04 06:42:32'),
 (35, 0, 505, 'asdfdsfsdaf', 36, '2023-06-05 10:01:34', '2023-06-10 20:27:34'),
 (36, 0, 12, '11111111', 37, '2023-06-05 23:20:05', '2023-06-10 20:27:40'),
-(37, 0, 200, 'adfdsfadsfdsf', 38, '2023-06-09 03:48:22', '2023-06-10 20:27:47');
+(37, 0, 200, 'adfdsfadsfdsf', 38, '2023-06-09 03:48:22', '2023-06-10 20:27:47'),
+(38, 1, 9, 'sadasd', 39, '2023-06-27 04:04:26', '2023-06-28 22:24:10');
 
 -- --------------------------------------------------------
 
@@ -282,7 +291,14 @@ INSERT INTO `movimiento` (`id_movimiento`, `fecha_mov`, `numero_comprobante`, `t
 (45, '2023-06-14', 32, 'Salida', 'Indefinido', 28, 1, '2023-06-14 05:52:30', '2023-06-14 05:52:30', 6, NULL),
 (46, '2023-06-14', 33, 'Salida', 'venta de tres artículos', 172, 1, '2023-06-14 05:56:54', '2023-06-14 05:56:54', 6, NULL),
 (47, '2023-06-14', 34, 'Salida', 'Indefinido', 126, 1, '2023-06-14 06:00:12', '2023-06-14 06:00:12', 1, NULL),
-(48, '2023-06-13', 0, 'Gasto', 'Almuerzos', 2.5, 3, NULL, NULL, 6, NULL);
+(48, '2023-06-13', 0, 'Gasto', 'Almuerzos', 2.5, 3, NULL, NULL, 6, NULL),
+(49, '2023-06-16', 35, 'Salida', 'Indefinido', 42, 1, '2023-06-16 05:32:22', '2023-06-16 05:32:22', 1, NULL),
+(50, '2023-06-16', 36, 'Salida', 'Indefinido', 18, 1, '2023-06-16 05:37:24', '2023-06-16 05:37:24', 6, 9),
+(51, '2023-06-16', 37, 'Salida', 'Indefinido', 37, 1, '2023-06-16 06:41:32', '2023-06-16 06:41:32', 1, 10),
+(52, '2023-06-16', 38, 'Salida', 'Indefinido', 10, 1, '2023-06-16 06:44:51', '2023-06-16 06:44:51', 6, 11),
+(53, '2023-06-16', 39, 'Salida', 'Indefinido', 22, 1, '2023-06-16 07:52:33', '2023-06-16 07:52:33', 1, 12),
+(54, '2023-06-28', 40, 'Salida', 'Indefinido', 30, 1, '2023-06-28 21:49:37', '2023-06-28 21:49:37', 1, 15),
+(55, '2023-06-28', 41, 'Salida', 'saddas', 30, 1, '2023-06-28 22:44:04', '2023-06-28 22:44:04', 6, 18);
 
 -- --------------------------------------------------------
 
@@ -343,7 +359,7 @@ INSERT INTO `producto` (`id_producto`, `nombre_producto`, `precio_compra`, `prec
 (1, 'Samsun A31', 4, 10, 7, 0, 0, 'FC-000001', 'Samsum', 'A31', 'FC-000001', 'fadsf', 1, 2, 2, NULL, '2023-06-07 08:25:51'),
 (2, 'Samsun A71', 5, 12, 8, 7, 6, 'FC-000002', 'Samsum', 'A71', 'FC-000002', 'jhfjjgjh', 1, 1, 1, NULL, '2023-06-07 08:25:59'),
 (3, 'Flex de carga Samsun A30', 4, 10, 7, 4, 5, 'FC-000003', 'Samsum', 'A30', 'FC-000003', '1', 1, 1, 1, NULL, '2023-06-07 08:39:39'),
-(4, 'Flex de carga Samsun A32 HG', 5, 12, 8, 0, 0, 'FC-000004', 'Samsum', 'A32 HG', 'FC-000004', '1', 1, 2, 3, NULL, '2023-06-07 09:25:09'),
+(4, 'Flex de carga Samsun A32 HG', 5, 12, 8, 0, 0, 'FC-000004', 'Samsum', 'A32 HG', 'FC-000004', '1', 0, 2, 3, NULL, '2023-06-16 07:49:45'),
 (5, 'Flex de carga Samsun A70', 6, 14, 9, 0, 0, 'FC-000005', 'Samsum', 'A70', 'FC-000005', '1', 1, 1, 2, NULL, '2023-06-07 09:28:07'),
 (6, 'Flex de carga Samsun A20', 4, 10, 7, 0, 0, 'FC-000006', 'Samsum', 'A20', 'FC-000006', '1', 1, 1, 1, NULL, '2023-06-09 00:45:14'),
 (7, 'Flex de carga Samsun A20S', 5, 12, 8, NULL, NULL, 'FC-000007', 'Samsum', 'A20S', 'FC-000007', '1', 1, 1, 1, NULL, '2023-06-07 09:28:21'),
@@ -377,7 +393,8 @@ INSERT INTO `producto` (`id_producto`, `nombre_producto`, `precio_compra`, `prec
 (35, 'Mica Samsung A100', 0.5, 1, 0.8, 0.75, 0.9, 'MicSMA100', 'Samsung', 'A100', 'MicSMA100', 'Mica para celulares Samsung A100', 1, 1, 3, '2023-06-04 06:42:32', '2023-06-04 06:42:32'),
 (36, 'adsf', 10, 20, 19, 18, 17, 'dasfad', 'adsf', 'adsf', 'dasfad', 'asdfdsfsdaf', 0, 2, 1, '2023-06-05 10:01:33', '2023-06-10 20:27:34'),
 (37, 'adsfadsf', 1, 1, 1, 1, 1, 'dfads', 'adsfadsf', 'asdfdsaf', 'dfads', '11111111', 0, 2, 1, '2023-06-05 23:20:05', '2023-06-10 20:27:40'),
-(38, 'ASD', 1, 2, 3, 4, 5, 'HHN1', 'Sandsad', 'Cargador', 'HHN1', 'adfdsfadsfdsf', 0, 2, 15, '2023-06-09 03:48:22', '2023-06-10 20:27:47');
+(38, 'ASD', 1, 2, 3, 4, 5, 'HHN1', 'Sandsad', 'Cargador', 'HHN1', 'adfdsfadsfdsf', 0, 2, 15, '2023-06-09 03:48:22', '2023-06-10 20:27:47'),
+(39, 'abc', 12, 15, 17, 13, 5.5, 'FC-000009', 'abc', 'abc', 'FC-000009', 'sadasd', 1, 3, 5, '2023-06-27 04:04:26', '2023-06-27 04:04:59');
 
 -- --------------------------------------------------------
 
@@ -441,15 +458,32 @@ CREATE TABLE `servicio_tecnico` (
   `id_servicio` int(11) NOT NULL,
   `fecha_ingreso_serv` date DEFAULT NULL,
   `fecha_salida_serv` date DEFAULT NULL,
+  `numero_comprobante` int(11) NOT NULL,
   `descripcion_serv` varchar(200) DEFAULT NULL,
   `estado_serv` tinyint(1) DEFAULT NULL,
   `precio_serv` float NOT NULL,
+  `precio_repuestos` float NOT NULL,
+  `total_servicio` float NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `id_cliente` int(11) DEFAULT NULL,
   `id_transacciones` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `servicio_tecnico`
+--
+
+INSERT INTO `servicio_tecnico` (`id_servicio`, `fecha_ingreso_serv`, `fecha_salida_serv`, `numero_comprobante`, `descripcion_serv`, `estado_serv`, `precio_serv`, `precio_repuestos`, `total_servicio`, `id_usuario`, `created_at`, `updated_at`, `id_cliente`, `id_transacciones`) VALUES
+(1, '2023-06-22', NULL, 0, 'Reparacion de Mica SM', 1, 5, 0, 0, 1, NULL, NULL, 6, 7),
+(2, '2023-06-23', '2023-06-26', 0, 'Reparación de corazón roto :c ', 1, 100, 0, 0, 1, NULL, NULL, 2, 7),
+(4, '2023-06-27', NULL, 0, 'Reparar la vida misma', 1, 100, 0, 0, 1, '2023-06-28 02:33:16', '2023-06-28 02:33:16', 1, 12),
+(5, '2023-06-27', NULL, 1, 'Reparar la vida misma', 1, 100, 0, 0, 1, '2023-06-28 04:14:41', '2023-06-28 04:14:41', 1, 12),
+(6, '2023-06-27', NULL, 1, 'Reparar XD', 1, 5, 7, 0, 2, '2023-06-28 04:36:29', '2023-06-28 04:36:29', 2, 11),
+(7, '2023-06-27', NULL, 3, 'Reparar cabeza', 1, 5, 7, 12, 1, '2023-06-28 06:17:52', '2023-06-28 06:17:52', 5, 10),
+(8, '2023-06-28', '2023-06-28', 4, 'Indefinido', 0, 15, 30, 45, 1, '2023-06-28 21:10:05', '2023-06-28 21:10:05', 6, 14),
+(9, '2023-06-28', '2023-06-28', 5, 'Indefinido', 0, 10, 26, 36, 1, '2023-06-28 22:24:08', '2023-06-28 22:24:08', 1, 17);
 
 -- --------------------------------------------------------
 
@@ -467,6 +501,15 @@ CREATE TABLE `servicio_tecnico_producto` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `servicio_tecnico_producto`
+--
+
+INSERT INTO `servicio_tecnico_producto` (`id_servicio_tecnico_producto`, `cantidad`, `valor_unitario`, `id_inventario`, `id_servicio`, `id_producto`, `created_at`, `updated_at`) VALUES
+(1, 1, 10, 9, 1, 9, NULL, NULL),
+(2, 1, 12, 10, 1, 10, NULL, NULL),
+(3, 1, 10, 9, 1, 9, '2023-06-28 03:10:21', '2023-06-28 03:10:21');
 
 -- --------------------------------------------------------
 
@@ -489,7 +532,19 @@ CREATE TABLE `transacciones` (
 --
 
 INSERT INTO `transacciones` (`id_transacciones`, `tipo_transaccion`, `tipo_pago`, `monto_transaccion`, `descripción`, `created_at`, `updated_at`) VALUES
-(6, 'Salida', 'Efectivo', 48, 'dfasdfdsfads', NULL, NULL);
+(6, 'Salida', 'Efectivo', 48, 'dfasdfdsfads', NULL, NULL),
+(7, 'Entrada', 'Transferencia', 27, 'Indefinido', '2023-06-16 05:29:21', '2023-06-16 05:29:21'),
+(8, 'Entrada', 'Transferencia', 42, 'Indefinido', '2023-06-16 05:31:31', '2023-06-16 05:31:31'),
+(9, 'Entrada', 'Transferencia', 18, 'Indefinido', '2023-06-16 05:37:21', '2023-06-16 05:37:21'),
+(10, 'Entrada', 'Efectivo', 37, 'Indefinido', '2023-06-16 06:41:25', '2023-06-16 06:41:25'),
+(11, 'Entrada', 'Efectivo', 10, 'Indefinido', '2023-06-16 06:44:47', '2023-06-16 06:44:47'),
+(12, 'Entrada', 'Efectivo', 22, 'Indefinido', '2023-06-16 07:52:22', '2023-06-16 07:52:22'),
+(13, 'Entrada', 'Efectivo', 40, 'Indefinido', '2023-06-28 21:07:36', '2023-06-28 21:07:36'),
+(14, 'Entrada', 'Efectivo', 45, 'Indefinido', '2023-06-28 21:09:56', '2023-06-28 21:09:56'),
+(15, 'Entrada', 'Efectivo', 30, 'Indefinido', '2023-06-28 21:49:14', '2023-06-28 21:49:14'),
+(16, 'Entrada', 'Transferencia', 44, 'Indefinido', '2023-06-28 22:19:08', '2023-06-28 22:19:08'),
+(17, 'Entrada', 'Transferencia', 36, 'Indefinido', '2023-06-28 22:23:36', '2023-06-28 22:23:36'),
+(18, 'Entrada', 'Efectivo', 30, 'Indefinido', '2023-06-28 22:44:01', '2023-06-28 22:44:01');
 
 -- --------------------------------------------------------
 
@@ -517,10 +572,11 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `usuario`, `password`, `nombre_usu`, `apellido_usu`, `cedula_usu`, `estado_usu`, `email`, `celular_usu`, `id_rol`, `created_at`, `updated_at`) VALUES
-(1, 'Jesus_Andrade', '123456789', 'Jesús', 'Andrade', '2350636441', 1, 'jdac2350636441@gmail.com', '0997264984', 2, NULL, NULL),
+(1, 'Jesus_Andrade', '123456789', 'José', 'Andrade', '2350636441', 1, 'jdac2350636441@gmail.com', '0997264984', 2, NULL, '2023-06-30 03:07:59'),
 (2, 'Dayana_Herrera', '123456789', 'Dayana', 'Herrera', '2325656771', 1, 'dayana2356@gmail.com', '0937568904', 1, NULL, NULL),
 (3, 'RENE', 'RENE', 'RENE', 'PILOZO', '1234567811', 1, 'rene.pilozo@example.com', '0987154320', 1, '2023-05-24 05:05:01', '2023-05-24 05:05:01'),
-(5, 'RENE1', 'RENE1', 'RENE1', 'PILOZO1', '1234567812', 1, 'rene1.pilozo@example.com', '0987154320', 1, '2023-05-26 05:46:49', '2023-05-26 05:46:49');
+(5, 'nuevo usuario', 'nuevo', 'nuevo nombre', 'nuevo Pilozo', '012345607', 1, 'nuevo_email0@example.com', '1234567800', 2, '2023-05-26 05:46:49', '2023-06-30 02:03:14'),
+(6, 'Ricardo', 'Ricardo', 'Ricardo', 'Pilozo', '0850587940', 1, 'ricardo.pilozo2@example.com', '0987154320', 1, '2023-06-30 01:47:02', '2023-06-30 01:47:02');
 
 --
 -- Índices para tablas volcadas
@@ -668,7 +724,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `detalle`
 --
 ALTER TABLE `detalle`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `devolucion`
@@ -680,13 +736,13 @@ ALTER TABLE `devolucion`
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `movimiento`
 --
 ALTER TABLE `movimiento`
-  MODIFY `id_movimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_movimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de la tabla `negocio`
@@ -698,7 +754,7 @@ ALTER TABLE `negocio`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
@@ -716,25 +772,25 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `servicio_tecnico`
 --
 ALTER TABLE `servicio_tecnico`
-  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio_tecnico_producto`
 --
 ALTER TABLE `servicio_tecnico_producto`
-  MODIFY `id_servicio_tecnico_producto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_servicio_tecnico_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `transacciones`
 --
 ALTER TABLE `transacciones`
-  MODIFY `id_transacciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_transacciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
