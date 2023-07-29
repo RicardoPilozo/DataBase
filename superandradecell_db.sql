@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-07-2023 a las 04:44:23
+-- Tiempo de generación: 29-07-2023 a las 08:55:37
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -30,10 +30,24 @@ SET time_zone = "+00:00";
 CREATE TABLE `caja` (
   `id_caja` int(11) NOT NULL,
   `fecha_caja` date NOT NULL,
+  `efectivo_final` float NOT NULL,
   `monto_total` float NOT NULL,
+  `observacion_caja` varchar(100) DEFAULT NULL,
+  `total_observacion` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `caja`
+--
+
+INSERT INTO `caja` (`id_caja`, `fecha_caja`, `efectivo_final`, `monto_total`, `observacion_caja`, `total_observacion`, `created_at`, `updated_at`) VALUES
+(6, '2023-07-27', 100, 100, 'Cierre correcto', 5, '2023-07-29 02:41:30', '2023-07-29 02:41:30'),
+(7, '2023-07-26', 10, 10, 'Cierre correcto', 0, '2023-07-29 02:49:02', '2023-07-29 02:49:02'),
+(8, '2023-07-28', 36, 36, 'Cierre correcto', 0, '2023-07-29 02:56:14', '2023-07-29 02:56:14'),
+(9, '2023-07-20', 100, 101, 'Sobrante efectivo', 1, '2023-07-29 03:39:21', '2023-07-29 03:39:21'),
+(10, '2023-07-29', 70, 70, 'Cierre correcto', 0, '2023-07-29 06:32:05', '2023-07-29 06:32:05');
 
 -- --------------------------------------------------------
 
@@ -195,7 +209,19 @@ INSERT INTO `detalle` (`id_detalle`, `cantidad`, `valor_unitario`, `id_inventari
 (88, 3, 14, 9, 137, 9, 8, '2023-07-13 02:11:52', '2023-07-13 02:11:52'),
 (89, 6, 10, 6, 137, 6, 6, '2023-07-13 02:11:52', '2023-07-13 02:11:52'),
 (90, 7, 12, 7, 138, 7, 7, '2023-07-13 02:12:53', '2023-07-13 02:12:53'),
-(91, 3, 1, 23, 138, 23, 0.8, '2023-07-13 02:12:53', '2023-07-13 02:12:53');
+(91, 3, 1, 23, 138, 23, 0.8, '2023-07-13 02:12:53', '2023-07-13 02:12:53'),
+(92, 2, 15, 39, 139, 39, 3, '2023-07-24 03:30:19', '2023-07-24 03:30:19'),
+(93, 5, 10, 6, 140, 6, 6, '2023-07-24 03:31:49', '2023-07-24 03:31:49'),
+(94, 2, 14, 9, 141, 9, 8, '2023-07-26 02:03:57', '2023-07-26 02:03:57'),
+(95, 3, 15, 39, 141, 39, 3, '2023-07-26 02:03:57', '2023-07-26 02:03:57'),
+(96, 1, 15, 39, 142, 39, 3, '2023-07-26 23:01:57', '2023-07-26 23:01:57'),
+(97, 2, 12, 7, 143, 7, 7, '2023-07-27 20:04:50', '2023-07-27 20:04:50'),
+(98, 7, 8, 7, 144, 7, 3, '2023-07-27 20:08:30', '2023-07-27 20:08:30'),
+(99, 5, 12, 7, 145, 7, 7, '2023-07-27 20:10:36', '2023-07-27 20:10:36'),
+(100, 10, 12, 7, 146, 7, 7, '2023-07-27 23:32:02', '2023-07-27 23:32:02'),
+(102, 3, 12, 7, 148, 7, 7, '2023-07-29 01:41:45', '2023-07-29 01:41:45'),
+(103, 5, 12, 7, 149, 7, 7, '2023-07-29 05:52:34', '2023-07-29 05:52:34'),
+(104, 4, 10, 6, 150, 6, 6, '2023-07-29 06:46:07', '2023-07-29 06:46:07');
 
 -- --------------------------------------------------------
 
@@ -234,7 +260,24 @@ INSERT INTO `devolucion` (`id_devolucion`, `fecha_dev`, `cantidad_dev`, `descrip
 (13, '2023-07-09', 4, 'XD', 39, 1, '2023-07-09 16:32:13', '2023-07-09 16:32:13'),
 (14, '2023-07-09', 3, '3 productos devueltos por mal estado ´´', 39, 1, '2023-07-09 16:33:35', '2023-07-09 16:33:35'),
 (15, '2023-07-11', 3, 'Devolución por fallos de fabricante', 39, 1, '2023-07-11 02:23:48', '2023-07-11 02:23:48'),
-(16, '2023-07-13', 11, 'Producto con daños de fabrica', 6, 1, '2023-07-13 02:38:30', '2023-07-13 02:38:30');
+(16, '2023-07-13', 11, 'Producto con daños de fabrica', 6, 1, '2023-07-13 02:38:30', '2023-07-13 02:38:30'),
+(17, '2023-07-27', 10, 'Daño de fabrica', 9, 21, '2023-07-27 21:55:48', '2023-07-27 21:55:48');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -259,13 +302,13 @@ CREATE TABLE `inventario` (
 INSERT INTO `inventario` (`id_inventario`, `estado_inv`, `cantidad_inventario`, `descripcion_inv`, `id_producto`, `created_at`, `updated_at`) VALUES
 (1, 0, 180, '', 1, NULL, '2023-07-05 07:18:49'),
 (2, 0, 120, '', 2, NULL, '2023-06-07 08:25:59'),
-(3, 0, 11, '', 3, NULL, '2023-06-13 05:29:53'),
+(3, 0, 10, '', 3, NULL, '2023-07-26 19:53:24'),
 (4, 0, 13, '', 4, NULL, '2023-06-07 09:25:09'),
 (5, 0, 10, '', 5, NULL, '2023-07-10 22:07:12'),
-(6, 0, 100, '', 6, NULL, '2023-07-13 02:38:31'),
-(7, 0, 162, '', 7, NULL, '2023-07-13 03:02:52'),
+(6, 0, 90, '', 6, NULL, '2023-07-29 06:46:07'),
+(7, 0, 130, '', 7, NULL, '2023-07-29 05:52:34'),
 (8, 1, 12, '', 8, NULL, '2023-06-14 05:56:57'),
-(9, 1, 63, '', 9, NULL, '2023-07-13 02:11:52'),
+(9, 1, 46, '', 9, NULL, '2023-07-27 21:55:48'),
 (10, 1, 101, '', 10, NULL, '2023-06-05 00:22:55'),
 (11, 1, 30, '', 11, NULL, NULL),
 (12, 1, 18, '', 12, NULL, NULL),
@@ -284,7 +327,7 @@ INSERT INTO `inventario` (`id_inventario`, `estado_inv`, `cantidad_inventario`, 
 (25, 1, 30, '', 25, NULL, NULL),
 (26, 1, 26, '', 26, NULL, NULL),
 (27, 1, 28, '', 27, NULL, NULL),
-(28, 1, 36, '', 28, NULL, NULL),
+(28, 1, 31, '', 28, NULL, '2023-07-26 23:11:05'),
 (29, 1, 23, '', 29, NULL, NULL),
 (30, 1, 20, '', 30, NULL, NULL),
 (31, 1, 50, '', 31, NULL, NULL),
@@ -295,7 +338,31 @@ INSERT INTO `inventario` (`id_inventario`, `estado_inv`, `cantidad_inventario`, 
 (36, 0, 12, '11111111', 36, '2023-06-05 23:20:05', '2023-06-10 20:27:40'),
 (37, 0, 200, 'adfdsfadsfdsf', 37, '2023-06-09 03:48:22', '2023-06-10 20:27:47'),
 (38, 1, 96, 'sadasd', 38, '2023-06-27 04:04:26', '2023-07-02 04:38:21'),
-(39, 1, 58, 'dgdfgfd', 39, NULL, '2023-07-13 02:11:51');
+(39, 1, 32, 'dgdfgfd', 39, NULL, '2023-07-27 15:28:52'),
+(40, 1, 150, 'sdasdsad', 40, '2023-07-25 01:06:51', '2023-07-25 01:06:51'),
+(41, 1, 200, 'afdsfsadf', 41, '2023-07-27 17:05:36', '2023-07-27 17:05:36');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
 
 -- --------------------------------------------------------
 
@@ -392,7 +459,18 @@ INSERT INTO `movimiento` (`id_movimiento`, `fecha_mov`, `numero_comprobante`, `t
 (135, '2023-02-16', 1006, 'Salida', 'Indefinido', 377, 1, '2023-07-11 00:19:56', '2023-07-11 00:19:56', 6, 73, 215, 1),
 (136, '2023-01-19', 1007, 'Salida', 'Indefinido', 570, 1, '2023-07-11 01:36:49', '2023-07-11 01:36:49', 1, 75, 340, 1),
 (137, '2023-07-13', 1008, 'Salida', 'Indefinido', 136, 1, '2023-07-13 02:11:48', '2023-07-13 02:11:48', 1, 76, 70, 1),
-(138, '2023-07-13', 1009, 'Salida', 'Indefinido', 87, 1, '2023-07-13 02:12:50', '2023-07-13 02:12:50', 6, 77, 51.4, 1);
+(138, '2023-07-13', 1009, 'Salida', 'Indefinido', 87, 1, '2023-07-13 02:12:50', '2023-07-13 02:12:50', 6, 77, 51.4, 1),
+(139, '2023-07-24', 1010, 'Salida', 'Indefinido', 30, 12, '2023-07-24 03:30:18', '2023-07-24 03:30:18', 6, 79, 6, 1),
+(140, '2023-07-24', 1011, 'Salida', 'Indefinido', 50, 17, '2023-07-24 03:31:48', '2023-07-24 03:31:48', 1, 80, 30, 1),
+(141, '2023-07-26', 1012, 'Salida', 'Indefinido', 73, 12, '2023-07-26 02:03:56', '2023-07-26 02:03:56', 6, 81, 25, 1),
+(142, '2023-07-26', 1013, 'Salida', 'Indefinido', 15, 19, '2023-07-26 23:01:55', '2023-07-26 23:01:55', 6, 97, 3, 1),
+(143, '2023-07-27', 1014, 'Salida', 'Indefinido', 24, 21, '2023-07-27 20:04:48', '2023-07-27 20:04:48', 6, 110, 14, 1),
+(144, '2023-07-27', 1015, 'Salida', 'Indefinido', 56, 21, '2023-07-27 20:08:28', '2023-07-27 20:08:28', 6, 111, 21, 1),
+(145, '2023-07-27', 1016, 'Salida', 'Indefinido', 60, 21, '2023-07-27 20:10:34', '2023-07-27 20:10:34', 6, 112, 35, 1),
+(146, '2023-07-27', 1017, 'Salida', 'Venta', 120, 21, '2023-07-27 23:31:59', '2023-07-27 23:31:59', 6, 119, 70, 1),
+(148, '2023-07-28', 1018, 'Salida', 'Venta', 36, 21, '2023-07-29 01:41:42', '2023-07-29 01:41:42', 6, 127, 21, 1),
+(149, '2023-07-29', 1019, 'Salida', 'Venta', 60, 19, '2023-07-29 05:52:31', '2023-07-29 05:52:31', 6, 132, 35, 1),
+(150, '2023-07-29', 1020, 'Salida', 'Venta', 40, 19, '2023-07-29 06:46:05', '2023-07-29 06:46:05', 1, 133, 24, 1);
 
 -- --------------------------------------------------------
 
@@ -418,6 +496,37 @@ CREATE TABLE `negocio` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `password_reset_tokens`
+--
+
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -488,7 +597,9 @@ INSERT INTO `producto` (`id_producto`, `nombre_producto`, `precio_compra`, `prec
 (36, 'adsf', 10, 20, 19, 18, 17, 'dasfad', 'adsf', 'adsf', 'dasfad', 'asdfdsfsdaf', 0, 2, 1, '2023-06-05 10:01:33', '2023-06-10 20:27:34'),
 (37, 'adsfadsf', 1, 1, 1, 1, 1, 'dfads', 'adsfadsf', 'asdfdsaf', 'dfads', '11111111', 0, 2, 1, '2023-06-05 23:20:05', '2023-06-10 20:27:40'),
 (38, 'ASD', 1, 2, 3, 4, 5, 'HHN1', 'Sandsad', 'Cargador', 'HHN1', 'adfdsfadsfdsf', 0, 2, 15, '2023-06-09 03:48:22', '2023-06-10 20:27:47'),
-(39, 'abc', 12, 15, 17, 13, 5.5, 'FC-000009', 'abc', 'abc', 'FC-000009', 'sadasd', 1, 3, 5, '2023-06-27 04:04:26', '2023-06-27 04:04:59');
+(39, 'abc', 12, 15, 17, 13, 5.5, 'FC-000009', 'abc', 'abc', 'FC-000009', 'sadasd', 1, 3, 5, '2023-06-27 04:04:26', '2023-06-27 04:04:59'),
+(40, 'Prueba1996', 5, 9, 8, 7, 6, 'Prueba', 'Prueba1996', 'Prueba1996', 'Prueba', 'sdasdsad', 1, 6, 3, '2023-07-25 01:06:51', '2023-07-25 01:06:51'),
+(41, 'ProductoX', 1, 5, 4, 3, 2, '0001', 'asdfadsf', 'afadf', '0001', 'afdsfsadf', 1, 2, 3, '2023-07-27 17:05:36', '2023-07-27 17:05:36');
 
 -- --------------------------------------------------------
 
@@ -504,6 +615,7 @@ CREATE TABLE `proveedor` (
   `cargo_prove` varchar(150) NOT NULL,
   `ciudad_prove` varchar(150) NOT NULL,
   `celular_prove` varchar(10) NOT NULL,
+  `cedula_prove` varchar(13) NOT NULL,
   `estado_prove` tinyint(1) NOT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL
@@ -513,14 +625,14 @@ CREATE TABLE `proveedor` (
 -- Volcado de datos para la tabla `proveedor`
 --
 
-INSERT INTO `proveedor` (`id_proveedor`, `nombre_prove`, `apellido_prove`, `empresa_prove`, `cargo_prove`, `ciudad_prove`, `celular_prove`, `estado_prove`, `updated_at`, `created_at`) VALUES
-(1, 'Andres', 'Arriaga', 'Full Battery', 'Gerente', 'Santo Domingo', '9825623542', 1, '2023-06-13 04:17:28', NULL),
-(2, 'Rene', 'Sanchez', 'Mega', 'Gerente', 'Santo Domingo', '9762081543', 1, '2023-06-13 04:18:15', NULL),
-(3, 'Juan', 'Lopez', 'Coperat', 'Vendedor', 'Guayaquil', '9815549620', 1, '2023-06-13 04:18:36', NULL),
-(4, 'Nuevo nombre', 'Nuevo apellido', 'Nueva empresa', 'Nuevo cargo', 'Nueva ciudad', '0256987463', 0, '2023-06-09 08:10:26', '2023-06-09 05:24:16'),
-(5, 'Ricardo', 'Nuevo apellido', 'Nueva empresa', 'Nuevo cargo', 'Nueva ciudad', '0256987463', 1, '2023-06-13 04:18:51', '2023-06-09 05:25:45'),
-(6, 'Christian', 'Perez', 'Espe', 'Docente', 'Santo domingo', '0123456789', 1, '2023-06-09 07:39:06', '2023-06-09 06:37:28'),
-(7, 'daf', 'dasfads', 'adsfads', 'adsfadsf', 'dsaf', '0123456788', 0, '2023-06-09 08:10:17', '2023-06-09 07:16:46');
+INSERT INTO `proveedor` (`id_proveedor`, `nombre_prove`, `apellido_prove`, `empresa_prove`, `cargo_prove`, `ciudad_prove`, `celular_prove`, `cedula_prove`, `estado_prove`, `updated_at`, `created_at`) VALUES
+(1, 'Andres', 'Arriaga', 'Full Battery', 'Gerente', 'Santo Domingo', '9825623542', '', 1, '2023-06-13 04:17:28', NULL),
+(2, 'Rene', 'Sanchez', 'Mega', 'Gerente', 'Santo Domingo', '9762081543', '', 1, '2023-06-13 04:18:15', NULL),
+(3, 'Juan', 'Lopez', 'Coperat', 'Vendedor', 'Guayaquil', '9815549620', '', 1, '2023-06-13 04:18:36', NULL),
+(4, 'Maria', 'Espinoza', 'Nueva empresa1', 'Director segundo', 'Pueblo nuevo', '0256987462', '1234899991', 1, '2023-07-27 18:10:34', '2023-06-09 05:24:16'),
+(5, 'Nuevo nombre1', 'Nuevo apellido1', 'Nueva empresa1', 'Nuevo cargo1', 'Nueva ciudad1', '0256987461', '1234899991', 1, '2023-07-22 21:30:04', '2023-06-09 05:25:45'),
+(6, 'Christian', 'Perez', 'Espe', 'Docente Ingles', 'Santo domingo', '0123456789', '3698756666', 1, '2023-07-27 18:11:57', '2023-06-09 06:37:28'),
+(7, 'daf', 'dasfads', 'adsfads', 'adsfadsf', 'dsaf', '0123456788', '', 0, '2023-06-09 08:10:17', '2023-06-09 07:16:46');
 
 -- --------------------------------------------------------
 
@@ -582,7 +694,35 @@ INSERT INTO `servicio_tecnico` (`id_servicio`, `fecha_ingreso_serv`, `fecha_sali
 (10, '2023-07-01', '2023-07-01', 6, 'Indefinido', 0, 10, 57, 67, 1, '2023-07-01 05:14:40', '2023-07-01 05:14:40', 6, 19, NULL),
 (11, '2023-07-09', '2023-07-09', 7, 'Reparación de celular RP', 0, 10, 30, 40, 1, '2023-07-09 00:18:25', '2023-07-09 00:18:25', 6, 68, 6),
 (12, '2023-02-22', '2023-02-22', 8, 'xd', 0, 10, 231, 241, 1, '2023-07-11 00:22:09', '2023-07-11 00:22:09', 1, 74, 123),
-(13, '2023-07-13', '2023-07-17', 9, 'suelda de pin de carga de teléfono SM20S', 1, 10, 12, 22, 1, '2023-07-13 03:02:48', '2023-07-13 03:02:48', 7, 78, 7);
+(13, '2023-07-13', '2023-07-17', 9, 'suelda de pin de carga de teléfono SM20S', 1, 10, 12, 22, 1, '2023-07-13 03:02:48', '2023-07-13 03:02:48', 7, 78, 7),
+(14, '2023-07-26', '2023-07-26', 10, '123131223', 0, 10, 58, 68, 1, '2023-07-26 02:21:27', '2023-07-26 02:21:27', 1, 82, 22),
+(15, '2023-07-26', '2023-07-26', 11, 'servicio técnico  sin repuesto', 0, 10, 0, 10, 1, '2023-07-26 19:46:41', '2023-07-26 19:46:41', 6, 84, 0),
+(16, '2023-07-26', '2023-07-26', 12, 'Reparacion de abc', 0, 10, 15, 25, 1, '2023-07-26 19:48:14', '2023-07-26 19:48:14', 6, 85, 3),
+(17, '2023-07-26', '2023-07-26', 13, 'repuesto', 0, 15, 55, 70, 1, '2023-07-26 19:53:19', '2023-07-26 19:53:19', 6, 86, 15),
+(18, '2023-07-26', '2023-07-26', 14, 'fdsfasgfdagdsfg', 0, 30, 0, 30, 1, '2023-07-26 19:55:13', '2023-07-26 19:55:13', 6, 87, 0),
+(19, '2023-07-26', '2023-07-26', 15, 'dsfadsgfdsagdsg', 0, 40, 0, 40, 1, '2023-07-26 20:06:27', '2023-07-26 20:06:27', 6, 89, 0),
+(20, '2023-07-26', '2023-07-26', 16, '60', 0, 60, 0, 60, 1, '2023-07-26 20:19:33', '2023-07-26 20:19:33', 6, 90, 0),
+(21, '2023-07-26', '2023-07-26', 17, 'se reparo un teléfono sin repuestos', 0, 10, 0, 10, 1, '2023-07-26 20:23:34', '2023-07-26 20:23:34', 6, 92, 0),
+(22, '2023-07-26', '2023-07-26', 18, 'dsafadsf', 0, 10, 15, 25, 1, '2023-07-26 20:35:36', '2023-07-26 20:35:36', 1, 94, 3),
+(23, '2023-07-26', '2023-07-26', 19, 'Indefinido', 0, 25, 30, 55, 1, '2023-07-26 20:38:09', '2023-07-26 20:38:09', 1, 95, 6),
+(24, '2023-07-26', '2023-07-26', 20, 'Indefinido', 1, 25, 30, 55, 1, '2023-07-26 20:39:47', '2023-07-26 20:39:47', 6, 96, 6),
+(25, '2023-07-26', '2023-07-26', 21, 'Indefinido', 0, 10, 35, 45, 1, '2023-07-26 23:11:02', '2023-07-26 23:11:02', 1, 98, 9.8),
+(26, '2023-07-26', '2023-07-26', 22, 'Indefinido', 1, 10, 30, 40, 1, '2023-07-27 03:10:30', '2023-07-27 03:10:30', 1, 100, 6),
+(27, '2023-07-26', '2023-07-26', 23, 'Indefinido', 1, 15, 60, 75, 1, '2023-07-27 03:14:32', '2023-07-27 03:14:32', 1, 101, 12),
+(28, '2023-07-26', '2023-07-26', 24, 'Indefinido', 1, 25, 75, 100, 1, '2023-07-27 03:17:18', '2023-07-27 03:17:18', 2, 102, 15),
+(29, '2023-07-26', '2023-07-26', 25, 'Indefinido', 1, 20, 15, 35, 1, '2023-07-27 03:18:55', '2023-07-27 03:18:55', 6, 103, 3),
+(30, '2023-07-26', '2023-07-26', 26, 'Indefinido', 1, 10, 42, 52, 1, '2023-07-27 03:21:42', '2023-07-27 03:21:42', 6, 104, 24),
+(31, '2023-07-27', '2023-07-27', 27, 'Se realiza un servicio técnico sin repuesto', 1, 10, 0, 10, 1, '2023-07-27 15:21:57', '2023-07-27 15:21:57', 6, 105, 0),
+(32, '2023-07-27', '2023-07-27', 28, 'Indefinido', 1, 10, 30, 40, 1, '2023-07-27 15:28:50', '2023-07-27 15:28:50', 6, 106, 6),
+(33, '2023-06-27', NULL, 3, 'Reparar cabeza', 1, 5, 7, 12, 1, '2023-07-27 18:48:11', '2023-07-27 18:48:11', 5, 10, NULL),
+(34, '2023-07-27', '2023-07-27', 29, 'dasfasdf', 1, 5, 0, 5, 21, '2023-07-27 23:10:09', '2023-07-27 23:10:09', 6, 114, 0),
+(35, '2023-07-27', '2023-07-27', 30, 'egerwgwerg', 0, 15, 0, 15, 21, '2023-07-27 23:10:33', '2023-07-27 23:10:33', 6, 115, 0),
+(36, '2023-07-27', '2023-07-27', 31, 'lllllll', 1, 13, 0, 13, 21, '2023-07-27 23:38:20', '2023-07-27 23:38:20', 6, 122, 0),
+(37, '2023-07-27', '2023-07-27', 32, 'fdgdfgd pendiente', 1, 3, 0, 3, 21, '2023-07-28 01:25:37', '2023-07-28 01:25:37', 6, 123, 0),
+(38, '2023-07-27', '2023-07-27', 33, 'nnnnn cancelado', 1, 6, 24, 30, 21, '2023-07-28 01:26:22', '2023-07-28 01:39:52', 6, 124, 14),
+(39, '2023-07-27', '2023-07-27', 34, 'estado pendiente', 0, 10, 0, 10, 21, '2023-07-28 02:05:50', '2023-07-28 02:05:50', 6, 125, 0),
+(40, '2023-07-28', '2023-07-28', 35, 'Se arregla celular Samsung A20s sin repuesto', 0, 30, 0, 30, 21, '2023-07-29 01:23:52', '2023-07-29 01:23:52', 6, 126, 0),
+(41, '2023-07-29', '2023-07-29', 36, 'Se genero una reparación de celular si repuesto', 1, 32, 0, 32, 19, '2023-07-29 06:52:00', '2023-07-29 06:52:00', 6, 134, 0);
 
 -- --------------------------------------------------------
 
@@ -592,14 +732,14 @@ INSERT INTO `servicio_tecnico` (`id_servicio`, `fecha_ingreso_serv`, `fecha_sali
 
 CREATE TABLE `servicio_tecnico_producto` (
   `id_servicio_tecnico_producto` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `valor_unitario` float NOT NULL,
-  `id_inventario` int(11) NOT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `valor_unitario` float DEFAULT NULL,
+  `id_inventario` int(11) DEFAULT NULL,
   `id_servicio` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL,
+  `id_producto` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `ganancia_serv_prod` float NOT NULL
+  `ganancia_serv_prod` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -614,7 +754,25 @@ INSERT INTO `servicio_tecnico_producto` (`id_servicio_tecnico_producto`, `cantid
 (8, 2, 15, 39, 11, 39, '2023-07-09 00:18:26', '2023-07-09 00:18:26', 3),
 (9, 3, 17, 39, 12, 39, '2023-07-11 00:22:10', '2023-07-11 00:22:10', 5),
 (10, 18, 10, 6, 12, 6, '2023-07-11 00:22:11', '2023-07-11 00:22:11', 6),
-(11, 1, 12, 7, 13, 7, '2023-07-13 03:02:50', '2023-07-13 03:02:50', 7);
+(11, 1, 12, 7, 13, 7, '2023-07-13 03:02:50', '2023-07-13 03:02:50', 7),
+(12, 2, 14, 9, 14, 9, '2023-07-26 02:21:28', '2023-07-26 02:21:28', 8),
+(13, 2, 15, 39, 14, 39, '2023-07-26 02:21:29', '2023-07-26 02:21:29', 3),
+(14, 0, NULL, NULL, 14, NULL, '2023-07-26 02:22:25', '2023-07-26 02:22:25', 0),
+(15, 1, 15, 39, 16, 39, '2023-07-26 19:48:15', '2023-07-26 19:48:15', 3),
+(16, 3, 15, 39, 17, 39, '2023-07-26 19:53:21', '2023-07-26 19:53:21', 3),
+(17, 1, 10, 3, 17, 3, '2023-07-26 19:53:21', '2023-07-26 19:53:21', 6),
+(18, 1, 15, 39, 22, 39, '2023-07-26 20:35:37', '2023-07-26 20:35:37', 3),
+(19, 2, 15, 39, 23, 39, '2023-07-26 20:38:11', '2023-07-26 20:38:11', 3),
+(20, 2, 15, 39, 24, 39, '2023-07-26 20:39:48', '2023-07-26 20:39:48', 3),
+(21, 2, 15, 39, 25, 39, '2023-07-26 23:11:03', '2023-07-26 23:11:03', 3),
+(22, 5, 1, 28, 25, 28, '2023-07-26 23:11:04', '2023-07-26 23:11:04', 0.76),
+(23, 2, 15, 39, 26, 39, '2023-07-27 03:10:32', '2023-07-27 03:10:32', 3),
+(24, 4, 15, 39, 27, 39, '2023-07-27 03:14:34', '2023-07-27 03:14:34', 3),
+(25, 5, 15, 39, 28, 39, '2023-07-27 03:17:19', '2023-07-27 03:17:19', 3),
+(26, 1, 15, 39, 29, 39, '2023-07-27 03:18:57', '2023-07-27 03:18:57', 3),
+(27, 3, 14, 9, 30, 9, '2023-07-27 03:21:43', '2023-07-27 03:21:43', 8),
+(28, 2, 15, 39, 32, 39, '2023-07-27 15:28:51', '2023-07-27 15:28:51', 3),
+(29, 2, 12, 7, 38, 7, '2023-07-28 01:26:23', '2023-07-28 01:26:23', 7);
 
 -- --------------------------------------------------------
 
@@ -627,90 +785,181 @@ CREATE TABLE `transacciones` (
   `tipo_transaccion` varchar(100) NOT NULL,
   `tipo_pago` varchar(100) NOT NULL,
   `monto_transaccion` float NOT NULL,
-  `descripción` varchar(200) DEFAULT NULL,
+  `descripcion` varchar(200) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `fecha_t` date NOT NULL
+  `fecha_t` date NOT NULL,
+  `motivo_transaccion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `transacciones`
 --
 
-INSERT INTO `transacciones` (`id_transacciones`, `tipo_transaccion`, `tipo_pago`, `monto_transaccion`, `descripción`, `created_at`, `updated_at`, `fecha_t`) VALUES
-(6, 'Salida', 'Efectivo', 48, 'dfasdfdsfads', NULL, NULL, '0000-00-00'),
-(7, 'Entrada', 'Transferencia', 27, 'Indefinido', '2023-06-16 05:29:21', '2023-06-16 05:29:21', '0000-00-00'),
-(8, 'Entrada', 'Transferencia', 42, 'Indefinido', '2023-06-16 05:31:31', '2023-06-16 05:31:31', '0000-00-00'),
-(9, 'Entrada', 'Transferencia', 18, 'Indefinido', '2023-06-16 05:37:21', '2023-06-16 05:37:21', '0000-00-00'),
-(10, 'Entrada', 'Efectivo', 37, 'Indefinido', '2023-06-16 06:41:25', '2023-06-16 06:41:25', '0000-00-00'),
-(11, 'Entrada', 'Efectivo', 10, 'Indefinido', '2023-06-16 06:44:47', '2023-06-16 06:44:47', '0000-00-00'),
-(12, 'Entrada', 'Efectivo', 22, 'Indefinido', '2023-06-16 07:52:22', '2023-06-16 07:52:22', '0000-00-00'),
-(13, 'Entrada', 'Efectivo', 40, 'Indefinido', '2023-06-28 21:07:36', '2023-06-28 21:07:36', '0000-00-00'),
-(14, 'Entrada', 'Efectivo', 45, 'Indefinido', '2023-06-28 21:09:56', '2023-06-28 21:09:56', '0000-00-00'),
-(15, 'Entrada', 'Efectivo', 30, 'Indefinido', '2023-06-28 21:49:14', '2023-06-28 21:49:14', '0000-00-00'),
-(16, 'Entrada', 'Transferencia', 44, 'Indefinido', '2023-06-28 22:19:08', '2023-06-28 22:19:08', '0000-00-00'),
-(17, 'Entrada', 'Transferencia', 36, 'Indefinido', '2023-06-28 22:23:36', '2023-06-28 22:23:36', '0000-00-00'),
-(18, 'Entrada', 'Efectivo', 30, 'Indefinido', '2023-06-28 22:44:01', '2023-06-28 22:44:01', '0000-00-00'),
-(19, 'Entrada', 'Efectivo', 67, 'Indefinido', '2023-07-01 05:14:25', '2023-07-01 05:14:25', '0000-00-00'),
-(20, 'Entrada', 'Tarjeta de crédito', 100.5, 'Venta de producto A', '2023-07-01 16:23:41', '2023-07-01 16:23:41', '2023-06-30'),
-(21, 'Entrada', 'Transferencia bancaria', 250.2, 'Compra de producto B', '2023-07-01 16:23:41', '2023-07-01 16:23:41', '2023-06-29'),
-(22, 'Entrada', 'Efectivo', 50.75, 'Venta de producto C', '2023-07-01 16:23:41', '2023-07-01 16:23:41', '2023-06-28'),
-(23, 'Entrada', 'Efectivo', 10.75, 'Venta de producto C', '2023-07-01 16:23:41', '2023-07-01 16:23:41', '2023-06-14'),
-(24, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-01'),
-(25, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-02'),
-(26, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-05'),
-(27, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-07'),
-(28, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-08'),
-(29, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-09'),
-(30, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-12'),
-(31, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-14'),
-(32, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-15'),
-(33, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-16'),
-(34, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-17'),
-(35, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-18'),
-(36, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-19'),
-(37, 'Entrada', 'Efectivo', 20.5, 'Venta de producto D', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-01'),
-(38, 'Entrada', 'Transferencia', 250.2, 'Compra de producto E', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-06-02'),
-(39, 'Entrada', 'Efectivo', 75.1, 'Venta de producto F', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-03'),
-(40, 'Entrada', 'Transferencia', 23, 'Venta de producto A', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-08'),
-(41, 'Entrada', 'Efectivo', 150, 'Venta de producto H', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-09'),
-(42, 'Entrada', 'Transferencia', 120, 'Venta de producto X', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-10'),
-(43, 'Entrada', 'Efectivo', 83, 'Venta de producto P', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-15'),
-(44, 'Entrada', 'Efectivo', 45, 'Venta de producto XP', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-16'),
-(45, 'Entrada', 'Transferencia', 110, 'Venta de producto HO', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-17'),
-(46, 'Entrada', 'Efectivo', 120, 'Venta de producto HX', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-22'),
-(47, 'Entrada', 'Transferencia', 58, 'Venta de producto HP', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-23'),
-(48, 'Entrada', 'Efectivo', 86, 'Venta de producto TG', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-24'),
-(49, 'Entrada', 'Efectivo', 56, 'Venta de producto PF', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-28'),
-(50, 'Entrada', 'Transferencia', 10, 'Venta de producto DT', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-29'),
-(51, 'Entrada', 'Efectivo', 50, 'Venta de producto YS', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-30'),
-(52, 'Entrada', 'Transferencia', 54, 'Indefinido', '2023-07-02 01:25:01', '2023-07-02 01:25:01', '2023-07-01'),
-(53, 'Entrada', 'Transferencia', 44, 'Indefinido', '2023-07-02 01:34:10', '2023-07-02 01:34:10', '2023-07-01'),
-(54, 'Entrada', 'Efectivo', 59, 'Indefinido', '2023-07-02 01:38:26', '2023-07-02 01:38:26', '2023-07-01'),
-(55, 'Entrada', 'Transferencia', 44, 'Indefinido', '2023-07-02 01:50:44', '2023-07-02 01:50:44', '2023-07-01'),
-(56, 'Entrada', 'Transferencia', 29, 'Indefinido', '2023-07-02 03:32:44', '2023-07-02 03:32:44', '2023-07-01'),
-(57, 'Entrada', 'Efectivo', 45, 'Indefinido', '2023-07-02 04:10:28', '2023-07-02 04:10:28', '2023-07-01'),
-(58, 'Entrada', 'Transferencia', 29, 'Indefinido', '2023-07-02 04:14:11', '2023-07-02 04:14:11', '2023-07-01'),
-(59, 'Entrada', 'Transferencia', 29, 'Indefinido', '2023-07-02 04:19:54', '2023-07-02 04:19:54', '2023-07-01'),
-(60, 'Entrada', 'Transferencia', 45, 'Indefinido', '2023-07-02 04:38:11', '2023-07-02 04:38:11', '2023-07-01'),
-(61, 'Entrada', 'Transferencia', 43, 'Indefinido', '2023-07-02 04:47:20', '2023-07-02 04:47:20', '2023-07-01'),
-(62, 'Entrada', 'Transferencia', 31, 'Indefinido', '2023-07-05 05:07:59', '2023-07-05 05:07:59', '2023-07-05'),
-(63, 'Entrada', 'Efectivo', 15, 'Indefinido', '2023-07-05 05:09:56', '2023-07-05 05:09:56', '2023-07-05'),
-(64, 'Entrada', 'Transferencia', 120, 'Indefinido', '2023-07-05 06:39:14', '2023-07-05 06:39:14', '2023-07-05'),
-(65, 'Entrada', 'Transferencia', 150, 'Indefinido', '2023-07-05 06:40:22', '2023-07-05 06:40:22', '2023-07-05'),
-(66, 'Entrada', 'Transferencia', 15, 'Indefinido', '2023-07-05 06:45:12', '2023-07-05 06:45:12', '2023-07-05'),
-(67, 'Entrada', 'Transferencia', 30, 'XD', '2023-07-08 23:14:49', '2023-07-08 23:14:49', '2023-07-08'),
-(68, 'Entrada', 'Transferencia', 40, 'xd', '2023-07-09 00:18:18', '2023-07-09 00:18:18', '2023-07-09'),
-(69, 'Entrada', 'Efectivo', 72, 'Indefinido', '2023-07-09 01:38:24', '2023-07-09 01:38:24', '2023-07-09'),
-(70, 'Entrada', 'Transferencia', 195, 'Indefinido', '2023-07-10 22:04:57', '2023-07-10 22:04:57', '2023-12-20'),
-(71, 'Entrada', 'Efectivo', 214, 'Indefinido', '2023-07-10 22:05:47', '2023-07-10 22:05:47', '2023-12-14'),
-(72, 'Entrada', 'Transferencia', 640, 'Indefinido', '2023-07-10 22:07:04', '2023-07-10 22:07:04', '2023-12-28'),
-(73, 'Entrada', 'Transferencia', 377, 'Indefinido', '2023-07-11 00:19:52', '2023-07-11 00:19:52', '2023-02-16'),
-(74, 'Entrada', 'Efectivo', 241, 'asfadfa', '2023-07-11 00:22:04', '2023-07-11 00:22:04', '2023-02-22'),
-(75, 'Entrada', 'Transferencia', 570, 'Indefinido', '2023-07-11 01:36:43', '2023-07-11 01:36:43', '2023-01-19'),
-(76, 'Entrada', 'Transferencia', 136, 'Indefinido', '2023-07-13 02:11:44', '2023-07-13 02:11:44', '2023-07-13'),
-(77, 'Entrada', 'Transferencia', 87, 'Indefinido', '2023-07-13 02:12:47', '2023-07-13 02:12:47', '2023-07-13'),
-(78, 'Entrada', 'Transferencia', 22, 'Indefinido', '2023-07-13 03:02:25', '2023-07-13 03:02:25', '2023-07-13');
+INSERT INTO `transacciones` (`id_transacciones`, `tipo_transaccion`, `tipo_pago`, `monto_transaccion`, `descripcion`, `created_at`, `updated_at`, `fecha_t`, `motivo_transaccion`) VALUES
+(6, 'Salida', 'Efectivo', -48, 'dfasdfdsfads', NULL, NULL, '2023-07-27', 'Gasto'),
+(7, 'Entrada', 'Transferencia', 27, 'Indefinido', '2023-06-16 05:29:21', '2023-06-16 05:29:21', '0000-00-00', ''),
+(8, 'Entrada', 'Transferencia', 42, 'Indefinido', '2023-06-16 05:31:31', '2023-06-16 05:31:31', '0000-00-00', ''),
+(9, 'Entrada', 'Transferencia', 18, 'Indefinido', '2023-06-16 05:37:21', '2023-06-16 05:37:21', '0000-00-00', ''),
+(10, 'Entrada', 'Efectivo', 37, 'Indefinido', '2023-06-16 06:41:25', '2023-06-16 06:41:25', '0000-00-00', ''),
+(11, 'Entrada', 'Efectivo', 10, 'Indefinido', '2023-06-16 06:44:47', '2023-06-16 06:44:47', '0000-00-00', ''),
+(12, 'Entrada', 'Efectivo', 22, 'Indefinido', '2023-06-16 07:52:22', '2023-06-16 07:52:22', '0000-00-00', ''),
+(13, 'Entrada', 'Efectivo', 40, 'Indefinido', '2023-06-28 21:07:36', '2023-06-28 21:07:36', '0000-00-00', ''),
+(14, 'Entrada', 'Efectivo', 45, 'Indefinido', '2023-06-28 21:09:56', '2023-06-28 21:09:56', '0000-00-00', ''),
+(15, 'Entrada', 'Efectivo', 30, 'Indefinido', '2023-06-28 21:49:14', '2023-06-28 21:49:14', '0000-00-00', ''),
+(16, 'Entrada', 'Transferencia', 44, 'Indefinido', '2023-06-28 22:19:08', '2023-06-28 22:19:08', '0000-00-00', ''),
+(17, 'Entrada', 'Transferencia', 36, 'Indefinido', '2023-06-28 22:23:36', '2023-06-28 22:23:36', '0000-00-00', ''),
+(18, 'Entrada', 'Efectivo', 30, 'Indefinido', '2023-06-28 22:44:01', '2023-06-28 22:44:01', '0000-00-00', ''),
+(19, 'Entrada', 'Efectivo', 67, 'Indefinido', '2023-07-01 05:14:25', '2023-07-01 05:14:25', '0000-00-00', ''),
+(20, 'Entrada', 'Tarjeta de crédito', 100.5, 'Venta de producto A', '2023-07-01 16:23:41', '2023-07-01 16:23:41', '2023-06-30', ''),
+(21, 'Entrada', 'Transferencia bancaria', 250.2, 'Compra de producto B', '2023-07-01 16:23:41', '2023-07-01 16:23:41', '2023-06-29', ''),
+(22, 'Entrada', 'Efectivo', 50.75, 'Venta de producto C', '2023-07-01 16:23:41', '2023-07-01 16:23:41', '2023-06-28', ''),
+(23, 'Entrada', 'Efectivo', 10.75, 'Venta de producto C', '2023-07-01 16:23:41', '2023-07-01 16:23:41', '2023-06-14', ''),
+(24, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-01', ''),
+(25, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-02', ''),
+(26, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-05', ''),
+(27, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-07', ''),
+(28, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-08', ''),
+(29, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-09', ''),
+(30, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-12', ''),
+(31, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-14', ''),
+(32, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-15', ''),
+(33, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-16', ''),
+(34, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-17', ''),
+(35, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-18', ''),
+(36, 'Entrada', 'AAA', 10.5, 'Venta de producto', '2023-07-01 16:33:36', '2023-07-01 16:33:36', '2023-06-19', ''),
+(37, 'Entrada', 'Efectivo', 20.5, 'Venta de producto D', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-01', ''),
+(38, 'Entrada', 'Transferencia', 250.2, 'Compra de producto E', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-06-02', ''),
+(39, 'Entrada', 'Efectivo', 75.1, 'Venta de producto F', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-03', ''),
+(40, 'Entrada', 'Transferencia', 23, 'Venta de producto A', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-08', ''),
+(41, 'Entrada', 'Efectivo', 150, 'Venta de producto H', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-09', ''),
+(42, 'Entrada', 'Transferencia', 120, 'Venta de producto X', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-10', ''),
+(43, 'Entrada', 'Efectivo', 83, 'Venta de producto P', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-15', ''),
+(44, 'Entrada', 'Efectivo', 45, 'Venta de producto XP', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-16', ''),
+(45, 'Entrada', 'Transferencia', 110, 'Venta de producto HO', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-17', ''),
+(46, 'Entrada', 'Efectivo', 120, 'Venta de producto HX', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-22', ''),
+(47, 'Entrada', 'Transferencia', 58, 'Venta de producto HP', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-23', ''),
+(48, 'Entrada', 'Efectivo', 86, 'Venta de producto TG', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-24', ''),
+(49, 'Entrada', 'Efectivo', 56, 'Venta de producto PF', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-28', ''),
+(50, 'Entrada', 'Transferencia', 10, 'Venta de producto DT', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-29', ''),
+(51, 'Entrada', 'Efectivo', 50, 'Venta de producto YS', '2023-07-01 17:20:17', '2023-07-01 17:20:17', '2023-05-30', ''),
+(52, 'Entrada', 'Transferencia', 54, 'Indefinido', '2023-07-02 01:25:01', '2023-07-02 01:25:01', '2023-07-01', ''),
+(53, 'Entrada', 'Transferencia', 44, 'Indefinido', '2023-07-02 01:34:10', '2023-07-02 01:34:10', '2023-07-01', ''),
+(54, 'Entrada', 'Efectivo', 59, 'Indefinido', '2023-07-02 01:38:26', '2023-07-02 01:38:26', '2023-07-01', ''),
+(55, 'Entrada', 'Transferencia', 44, 'Indefinido', '2023-07-02 01:50:44', '2023-07-02 01:50:44', '2023-07-01', ''),
+(56, 'Entrada', 'Transferencia', 29, 'Indefinido', '2023-07-02 03:32:44', '2023-07-02 03:32:44', '2023-07-01', ''),
+(57, 'Entrada', 'Efectivo', 45, 'Indefinido', '2023-07-02 04:10:28', '2023-07-02 04:10:28', '2023-07-01', ''),
+(58, 'Entrada', 'Transferencia', 29, 'Indefinido', '2023-07-02 04:14:11', '2023-07-02 04:14:11', '2023-07-01', ''),
+(59, 'Entrada', 'Transferencia', 29, 'Indefinido', '2023-07-02 04:19:54', '2023-07-02 04:19:54', '2023-07-01', ''),
+(60, 'Entrada', 'Transferencia', 45, 'Indefinido', '2023-07-02 04:38:11', '2023-07-02 04:38:11', '2023-07-01', ''),
+(61, 'Entrada', 'Transferencia', 43, 'Indefinido', '2023-07-02 04:47:20', '2023-07-02 04:47:20', '2023-07-01', ''),
+(62, 'Entrada', 'Transferencia', 31, 'Indefinido', '2023-07-05 05:07:59', '2023-07-05 05:07:59', '2023-07-05', ''),
+(63, 'Entrada', 'Efectivo', 15, 'Indefinido', '2023-07-05 05:09:56', '2023-07-05 05:09:56', '2023-07-05', ''),
+(64, 'Entrada', 'Transferencia', 120, 'Indefinido', '2023-07-05 06:39:14', '2023-07-05 06:39:14', '2023-07-05', ''),
+(65, 'Entrada', 'Transferencia', 150, 'Indefinido', '2023-07-05 06:40:22', '2023-07-05 06:40:22', '2023-07-05', ''),
+(66, 'Entrada', 'Transferencia', 15, 'Indefinido', '2023-07-05 06:45:12', '2023-07-05 06:45:12', '2023-07-05', ''),
+(67, 'Entrada', 'Transferencia', 30, 'XD', '2023-07-08 23:14:49', '2023-07-08 23:14:49', '2023-07-08', ''),
+(68, 'Entrada', 'Transferencia', 40, 'xd', '2023-07-09 00:18:18', '2023-07-09 00:18:18', '2023-07-09', ''),
+(69, 'Entrada', 'Efectivo', 72, 'Indefinido', '2023-07-09 01:38:24', '2023-07-09 01:38:24', '2023-07-09', ''),
+(70, 'Entrada', 'Transferencia', 195, 'Indefinido', '2023-07-10 22:04:57', '2023-07-10 22:04:57', '2023-12-20', ''),
+(71, 'Entrada', 'Efectivo', 214, 'Indefinido', '2023-07-10 22:05:47', '2023-07-10 22:05:47', '2023-12-14', ''),
+(72, 'Entrada', 'Transferencia', 640, 'Indefinido', '2023-07-10 22:07:04', '2023-07-10 22:07:04', '2023-12-28', ''),
+(73, 'Entrada', 'Transferencia', 377, 'Indefinido', '2023-07-11 00:19:52', '2023-07-11 00:19:52', '2023-02-16', ''),
+(74, 'Entrada', 'Efectivo', 241, 'asfadfa', '2023-07-11 00:22:04', '2023-07-11 00:22:04', '2023-02-22', ''),
+(75, 'Entrada', 'Transferencia', 570, 'Indefinido', '2023-07-11 01:36:43', '2023-07-11 01:36:43', '2023-01-19', ''),
+(76, 'Entrada', 'Transferencia', 136, 'Indefinido', '2023-07-13 02:11:44', '2023-07-13 02:11:44', '2023-07-13', ''),
+(77, 'Entrada', 'Transferencia', 87, 'Indefinido', '2023-07-13 02:12:47', '2023-07-13 02:12:47', '2023-07-13', ''),
+(78, 'Entrada', 'Transferencia', 22, 'Indefinido', '2023-07-13 03:02:25', '2023-07-13 03:02:25', '2023-07-13', ''),
+(79, 'Entrada', 'Efectivo', 30, 'Indefinido', '2023-07-24 03:30:13', '2023-07-24 03:32:55', '2023-07-24', ''),
+(80, 'Entrada', 'Transferencia', 50, 'Indefinido', '2023-07-24 03:31:33', '2023-07-24 03:33:07', '2023-07-24', ''),
+(81, 'Entrada', 'Efectivo', 73, 'Indefinido', '2023-07-26 02:03:50', '2023-07-26 02:03:50', '2023-07-26', ''),
+(82, 'Entrada', 'Transferencia', 68, 'Indefinido', '2023-07-26 02:20:07', '2023-07-26 02:20:07', '2023-07-26', ''),
+(83, 'Entrada', 'Transferencia', 10, 'Indefinido', '2023-07-26 19:42:32', '2023-07-26 19:42:32', '2023-07-26', ''),
+(84, 'Entrada', 'Transferencia', 10, 'Indefinido', '2023-07-26 19:46:30', '2023-07-26 19:46:30', '2023-07-26', ''),
+(85, 'Entrada', 'Efectivo', 25, 'Indefinido', '2023-07-26 19:48:10', '2023-07-26 19:48:10', '2023-07-26', ''),
+(86, 'Entrada', 'Efectivo', 70, 'Indefinido', '2023-07-26 19:53:08', '2023-07-26 19:53:08', '2023-07-26', ''),
+(87, 'Entrada', 'Transferencia', 30, 'Indefinido', '2023-07-26 19:55:08', '2023-07-26 19:55:08', '2023-07-26', ''),
+(88, 'Entrada', 'Transferencia', 45, 'Indefinido', '2023-07-26 20:04:16', '2023-07-26 20:04:16', '2023-07-26', ''),
+(89, 'Entrada', 'Transferencia', 40, 'Indefinido', '2023-07-26 20:06:16', '2023-07-26 20:06:16', '2023-07-26', ''),
+(90, 'Entrada', 'Transferencia', 60, 'Indefinido', '2023-07-26 20:19:15', '2023-07-26 20:19:15', '2023-07-26', ''),
+(91, 'Entrada', 'Transferencia', 0, 'sgdfgfds', '2023-07-26 20:20:32', '2023-07-26 20:20:32', '2023-07-26', ''),
+(92, 'Entrada', 'Transferencia', 10, 'dfasdfdsaf', '2023-07-26 20:23:04', '2023-07-26 20:23:04', '2023-07-26', ''),
+(93, 'Entrada', 'Transferencia', 10, 'Indefinido', '2023-07-26 20:28:16', '2023-07-26 20:28:16', '2023-07-26', ''),
+(94, 'Entrada', 'Transferencia', 25, 'Indefinido', '2023-07-26 20:34:35', '2023-07-26 20:34:35', '2023-07-26', ''),
+(95, 'Entrada', 'Transferencia', 55, 'Indefinido', '2023-07-26 20:38:03', '2023-07-26 20:38:03', '2023-07-26', ''),
+(96, 'Entrada', 'Transferencia', 55, 'Indefinido', '2023-07-26 20:39:32', '2023-07-26 20:39:32', '2023-07-26', ''),
+(97, 'Entrada', 'Transferencia', 15, 'Indefinido', '2023-07-26 23:00:49', '2023-07-26 23:00:49', '2023-07-26', ''),
+(98, 'Entrada', 'Transferencia', 40, 'Indefinido', '2023-07-26 23:10:10', '2023-07-26 23:10:10', '2023-07-26', ''),
+(99, 'Entrada', 'Transferencia', 50, 'Indefinido', '2023-07-27 03:02:22', '2023-07-27 03:02:22', '2023-07-26', ''),
+(100, 'Entrada', 'Efectivo', 40, 'Indefinido', '2023-07-27 03:10:18', '2023-07-27 03:10:18', '2023-07-26', ''),
+(101, 'Entrada', 'Transferencia', 75, 'Indefinido', '2023-07-27 03:14:28', '2023-07-27 03:14:28', '2023-07-26', ''),
+(102, 'Entrada', 'Transferencia', 100, 'Indefinido', '2023-07-27 03:17:08', '2023-07-27 03:17:08', '2023-07-26', ''),
+(103, 'Entrada', 'Efectivo', 35, 'Indefinido', '2023-07-27 03:18:50', '2023-07-27 03:18:50', '2023-07-26', ''),
+(104, 'Entrada', 'Efectivo', 52, 'Indefinido', '2023-07-27 03:21:18', '2023-07-27 03:21:18', '2023-07-26', ''),
+(105, 'Entrada', 'Transferencia', 10, 'Indefinido', '2023-07-27 15:21:46', '2023-07-27 15:21:46', '2023-07-27', ''),
+(106, 'Entrada', 'Efectivo', 40, 'Indefinido', '2023-07-27 15:28:38', '2023-07-27 15:28:38', '2023-07-27', ''),
+(107, 'Salida', 'Efectivo', -5, 'Almuerzos', '2023-07-27 19:46:52', '2023-07-27 19:46:52', '2023-07-27', 'Gasto'),
+(108, 'Salida', 'Efectivo', -10, 'Merienda', '2023-07-27 19:48:42', '2023-07-27 19:48:42', '2023-07-27', 'Gasto'),
+(109, 'Entrada', 'Efectivo', 15, 'nose', '2023-07-27 19:53:05', '2023-07-27 19:53:05', '2023-07-27', ''),
+(110, 'Entrada', 'Transferencia', 24, 'Indefinido', '2023-07-27 20:04:45', '2023-07-27 20:04:45', '2023-07-27', ''),
+(111, 'Entrada', 'Efectivo', 56, 'Indefinido', '2023-07-27 20:08:24', '2023-07-27 20:08:24', '2023-07-27', ''),
+(112, 'Entrada', 'Transferencia', 60, 'Indefinido', '2023-07-27 20:10:30', '2023-07-27 20:10:30', '2023-07-27', ''),
+(113, 'Entrada', 'Transferencia', 10, 'Indefinido', '2023-07-27 23:02:57', '2023-07-27 23:02:57', '2023-07-27', ''),
+(114, 'Entrada', 'Efectivo', 5, 'Indefinido', '2023-07-27 23:10:05', '2023-07-27 23:10:05', '2023-07-27', ''),
+(115, 'Entrada', 'Transferencia', 15, 'Indefinido', '2023-07-27 23:10:30', '2023-07-27 23:10:30', '2023-07-27', ''),
+(116, 'Salida', 'Efectivo', -30, 'Compra de Articulo de oficina', '2023-07-27 23:12:01', '2023-07-27 23:12:01', '2023-07-27', 'Gasto'),
+(117, 'Salida', 'Efectivo', -17, 'Taxis', '2023-07-27 23:16:33', '2023-07-27 23:16:33', '2023-07-27', 'Gasto'),
+(118, 'Salida', 'Efectivo', -36, 'Viaticos', '2023-07-27 23:18:48', '2023-07-27 23:18:48', '2023-07-27', 'Gasto'),
+(119, 'Entrada', 'Transferencia', 120, 'Indefinido', '2023-07-27 23:31:56', '2023-07-27 23:31:56', '2023-07-27', ''),
+(120, 'Entrada', 'Efectivo', 120, 'Indefinido', '2023-07-27 23:33:16', '2023-07-27 23:33:16', '2023-07-27', ''),
+(121, 'Entrada', 'Efectivo', 10, 'Venta', '2023-07-27 23:37:05', '2023-07-27 23:37:05', '2023-07-27', ''),
+(122, 'Entrada', 'Transferencia', 13, 'Servicio Técnico', '2023-07-27 23:38:16', '2023-07-27 23:38:16', '2023-07-27', ''),
+(123, 'Entrada', 'Transferencia', 3, 'Servicio Técnico', '2023-07-28 01:25:25', '2023-07-28 01:25:25', '2023-07-27', ''),
+(124, 'Entrada', 'Efectivo', 30, 'Servicio Técnico', '2023-07-28 01:26:16', '2023-07-28 01:26:16', '2023-07-27', ''),
+(125, 'Entrada', 'Transferencia', 10, 'Servicio Técnico', '2023-07-28 02:05:47', '2023-07-28 02:05:47', '2023-07-27', ''),
+(126, 'Entrada', 'Transferencia', 30, 'Servicio Técnico', '2023-07-29 01:23:47', '2023-07-29 01:23:47', '2023-07-28', ''),
+(127, 'Entrada', 'Efectivo', 36, 'Venta', '2023-07-29 01:41:38', '2023-07-29 01:41:38', '2023-07-28', 'Venta'),
+(128, 'Entrada', 'Efectivo', 30, 'Monto Inicial', '2023-07-29 05:15:21', '2023-07-29 05:15:21', '2023-07-28', 'MontoInicial'),
+(129, 'Salida', 'Efectivo', -10, 'Almuerzos', '2023-07-29 05:23:12', '2023-07-29 05:23:12', '2023-07-29', 'Gasto'),
+(130, 'Entrada', 'Efectivo', 40, 'El ingreso de hoy 29', '2023-07-29 05:49:59', '2023-07-29 05:49:59', '2023-07-29', 'MontoInicial'),
+(131, 'Salida', 'Efectivo', -20, 'Taxis', '2023-07-29 05:50:38', '2023-07-29 05:50:38', '2023-07-29', 'Gasto'),
+(132, 'Entrada', 'Efectivo', 60, 'Venta', '2023-07-29 05:52:24', '2023-07-29 05:52:24', '2023-07-29', 'Venta'),
+(133, 'Entrada', 'Transferencia', 40, 'Venta', '2023-07-29 06:46:00', '2023-07-29 06:46:00', '2023-07-29', 'Venta'),
+(134, 'Entrada', 'Efectivo', 32, 'Servicio Técnico', '2023-07-29 06:51:56', '2023-07-29 06:51:56', '2023-07-29', 'Servicio Técnico');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Pedro1', 'Pedro1.Pedro@example.com', NULL, '$2y$10$hYARJNENgAEozUmz5gVrOedYzPRZaAnd2fR7p9r.ziiSdTHRUo9fi', NULL, '2023-07-23 06:33:21', '2023-07-23 06:33:21'),
+(2, 'Pedro1', 'Pedro13.Pedro@example.com', NULL, '$2y$10$vSb3YmFMCXyzrAOZfo9MMeNLpl6oiy3CLzZE6mWgZK6WwrGP9BtGm', NULL, '2023-07-23 06:38:04', '2023-07-23 06:38:04'),
+(3, 'Luis', 'Luis1@example.com', NULL, '$2y$10$/tC/zYtjZ8hj978UyXgo0.7s2ZSoNWz4Uxw.keHBNmX81DxaMvGCG', NULL, '2023-07-23 23:58:55', '2023-07-23 23:58:55'),
+(4, 'RicarZo', 'ricarzo@gmail.com', NULL, '$2y$10$gAs/dpe59CjRA9HX3ccWLe/HQVHKDbZKgmAQagr1./P0ecoHvXSlS', NULL, '2023-07-24 02:55:45', '2023-07-24 02:55:45'),
+(5, 'Luis1', 'Luis11@example.com', NULL, '$2y$10$n9555vJzVqTe6iokhe83vuWu192QAjf9V8vS1Lf8QGjMsSAmf8qLy', NULL, '2023-07-24 02:56:52', '2023-07-24 02:56:52'),
+(6, 'josekk', 'josekk123@gmail.com', NULL, '$2y$10$RkYNeE6LglpZ3XWQRuI/1upXt1hY8j1SMK2V.qZMn2oZt60Je8GKG', NULL, '2023-07-24 03:00:45', '2023-07-24 03:00:45'),
+(7, 'Luis15', 'Luis15@example.com', NULL, '$2y$10$5g0/e9UKjhCzOn0dOqROu.PVqsdwysKBgyrRCd/AtrzA/yBkql3h.', NULL, '2023-07-24 08:02:42', '2023-07-24 08:02:42'),
+(8, 'JosePerez11', 'joseperez11@gmail.com', NULL, '$2y$10$ILScFwR.bzErQgKxwaffeesnm7nKZIgZevc7SpbVLXDbPonsC4iIq', NULL, '2023-07-25 02:07:13', '2023-07-25 02:07:13'),
+(9, 'RicardoPilozo96', 'ricardopilozo96@gmail.com', NULL, '$2y$10$haSIpFzRdg5PI38dLDuHp.qMO7r8WRxhxxhX35AmTlEHP8m2xUOve', NULL, '2023-07-25 02:16:39', '2023-07-25 02:16:39'),
+(11, 'admin', 'admin@example.com', NULL, '$2y$10$HOdCcz79FwueG4ZrWV/6uu9E5CYN.HGYyJpPxQFk51mNnX.y0/IOe', NULL, '2023-07-27 01:13:51', '2023-07-27 01:13:51'),
+(12, 'RaulVelez99', 'raulvelez99@gmail.com', NULL, '$2y$10$.0cZ2Ptv.iEK/ZSLRU80AO1.QO/maXtP95bMYoi3rqcPrbF2bAj5G', NULL, '2023-07-28 00:18:22', '2023-07-28 00:18:22');
 
 -- --------------------------------------------------------
 
@@ -738,11 +987,26 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `usuario`, `password`, `nombre_usu`, `apellido_usu`, `cedula_usu`, `estado_usu`, `email`, `celular_usu`, `id_rol`, `created_at`, `updated_at`) VALUES
-(1, 'Jesus_Andrade', '1234567890', 'Deicy', 'Andrade', '2350636441', 1, 'jdac2350636441@gmail.com', '0997264984', 2, NULL, '2023-07-01 05:19:29'),
+(1, 'Jesus_Andrade', '123456789', 'Deicy', 'Andrade', '2350636441', 1, 'jdac2350636441@gmail.com', '0997264984', 2, NULL, '2023-07-23 21:43:04'),
 (2, 'Dayana_Herrera', '123456789', 'Dayana', 'Herrera', '2325656771', 1, 'dayana2356@gmail.com', '0937568904', 1, NULL, NULL),
 (3, 'RENE', 'RENE', 'RENE', 'PILOZO', '1234567811', 1, 'rene.pilozo@example.com', '0987154320', 1, '2023-05-24 05:05:01', '2023-05-24 05:05:01'),
 (5, 'nuevo usuario', 'nuevo', 'nuevo nombre', 'nuevo Pilozo', '012345607', 1, 'nuevo_email0@example.com', '1234567800', 2, '2023-05-26 05:46:49', '2023-06-30 02:03:14'),
-(6, 'Ricardo', 'Ricardo', 'Ricardo', 'Pilozo', '0850587940', 1, 'ricardo.pilozo2@example.com', '0987154320', 1, '2023-06-30 01:47:02', '2023-06-30 01:47:02');
+(6, 'Ricardo', 'Ricardo', 'Ricardo', 'Pilozo', '0850587940', 1, 'ricardo.pilozo2@example.com', '0987154320', 1, '2023-06-30 01:47:02', '2023-06-30 01:47:02'),
+(7, 'Pedro1', '$2y$10$YtfRh1lHImtJ.LMnC6/.memzMVAIAv6KIbYWFkpZr37Hz34YAdHDe', 'Pedro1', 'Pedro1', '0850587911', 1, 'Pedro1.Pedro@example.com', '0987111111', 1, '2023-07-22 21:27:27', '2023-07-22 21:27:27'),
+(8, 'Pedro1', '$2y$10$Xtj7adM3Sd0l12eBl0fLU.9r3TqjVbHOjaAGdOeKUwY1keR28THha', 'Pedro1', 'Pedro1', '0850587922', 1, 'Pedro1.Pedro@example.com', '0987111111', 1, '2023-07-23 06:11:00', '2023-07-23 06:11:00'),
+(9, 'Pedro1', '$2y$10$SrBdTxdLeB.o4Jp7fLEuSum90.YvKoqWb49BznKefv/j5VlMNSww.', 'Pedro1', 'Pedro1', '0850587955', 1, 'Pedro1.Pedro@example.com', '0987111111', 1, '2023-07-23 06:28:17', '2023-07-23 06:28:17'),
+(10, 'Pedro1', '$2y$10$nUt5q3RC7QDRiIt10HMne.78fdZ9CwKYBxkueAsUiPS2XslW9AdY6', 'Pedro1', 'Pedro1', '0850587989', 1, 'Pedro1.Pedro@example.com', '0987111111', 1, '2023-07-23 06:31:41', '2023-07-23 06:31:41'),
+(11, 'Pedro1', '$2y$10$UBFY/J1Cja4FBEIWZV3CVuyGBYba4VY6K0xs/DuxxikwK5OhgOk3W', 'Pedro1', 'Pedro1', '3085058333', 1, 'Pedro1.Pedro@example.com', '0987111111', 1, '2023-07-23 06:33:21', '2023-07-23 06:33:21'),
+(12, 'Pedro96', '$2y$10$lOaj8opMhRr06Xb0R.koCuF2TyH6EZ.SnRpgjtz/30wH04xWzguYq', 'Pedro96', 'Pedro1', '3085058334', 1, 'Pedro13.Pedro@example.com', '0987111111', 1, '2023-07-23 06:38:04', '2023-07-23 20:55:20'),
+(13, 'Luis', '$2y$10$DxLI2ZpYairSQZ.5htQYuOklaOIMb5P8w8o2Jrk6WFAo53Sa6GwKq', 'Luis', 'Luis', '1185058334', 1, 'Luis1@example.com', '0111111111', 1, '2023-07-23 23:58:55', '2023-07-23 23:58:55'),
+(14, 'RicarZo', '$2y$10$dECOAfHd2PyAtzMnC/Rna.Q0VJiqmy44oDH0f9s5YXM8BmBDRzpUS', 'Ricardo', 'Pilozo', '1236599687', 1, 'ricarzo@gmail.com', '1565563251', 1, '2023-07-24 02:55:44', '2023-07-24 02:55:44'),
+(15, 'Luis1', '$2y$10$UcTPECXkeHaPcJ9oUO7FROd6z9CbW.Xe05Tte0gg61fD4SeB4YWuK', 'Luis1', 'Luis1', '1185058314', 1, 'Luis11@example.com', '0121111111', 1, '2023-07-24 02:56:52', '2023-07-24 02:56:52'),
+(16, 'josekk', '$2y$10$adz4i1vZvS2nm37aPkDuKej.BAE8H.jI0q9W.BL2i1Tb1SRFaEk5a', 'jose', 'kkk', '1235698754', 1, 'josekk123@gmail.com', '1635976325', 1, '2023-07-24 03:00:45', '2023-07-24 03:00:45'),
+(17, 'Luis150', '$2y$10$pFEcKZFFrFpYeehhzYI31OzF/n2k0xomCe/6fzta9cwQJ8ITNScZu', 'Luis15', 'Luis15', '1185058320', 1, 'Luis15@example.com', '0121111110', 1, '2023-07-24 08:02:41', '2023-07-24 03:12:41'),
+(18, 'JosePerez11', '$2y$10$LRGE3zuL7.YOpVBP5.6e0eDYDI.gnbSlk3xSAmnrJxsUIQz/GP3uK', 'Jose', 'Perez', '5698764231', 1, 'joseperez11@gmail.com', '5689775562', 1, '2023-07-25 02:07:13', '2023-07-25 02:07:13'),
+(19, 'RicardoPilozo96', '$2y$10$NGnntT9UC82X/xCyuuTVTeYNSL1OYeEgZ0zxUCIUdJBKryiH9m4My', 'Ricardo', 'Pilozo', '0850587924', 1, 'ricardopilozo96@gmail.com', '2365998764', 2, '2023-07-25 02:16:39', '2023-07-25 02:16:39'),
+(21, 'admin', '$2y$10$tL.uq6POWmTMFyCEwlx92.eJ.xQsPqT7ILDbkdufaWaCzDi8r0Gs.', 'Admin', 'Admin', '1122334455', 1, 'admin@example.com', '1122334455', 1, '2023-07-27 01:13:51', '2023-07-27 01:13:51'),
+(22, 'RaulVelez99', '$2y$10$8k8KjlNZBe.tMfUUT/EH3e/yemL0t9L7DHKZdf9SzaFExT4ACKnxW', 'Raul', 'Velez', '6987695633', 1, 'raulvelez99@gmail.com', '2569897788', 1, '2023-07-28 00:18:22', '2023-07-28 00:18:22');
 
 --
 -- Índices para tablas volcadas
@@ -784,11 +1048,24 @@ ALTER TABLE `devolucion`
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
+-- Indices de la tabla `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
 -- Indices de la tabla `inventario`
 --
 ALTER TABLE `inventario`
   ADD PRIMARY KEY (`id_inventario`),
   ADD KEY `id_producto` (`id_producto`);
+
+--
+-- Indices de la tabla `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `movimiento`
@@ -812,6 +1089,20 @@ ALTER TABLE `negocio`
   ADD KEY `id_devolucion` (`id_devolucion`),
   ADD KEY `id_movimiento` (`id_movimiento`),
   ADD KEY `id_proveedor` (`id_proveedor`);
+
+--
+-- Indices de la tabla `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indices de la tabla `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
 -- Indices de la tabla `producto`
@@ -858,6 +1149,13 @@ ALTER TABLE `transacciones`
   ADD PRIMARY KEY (`id_transacciones`);
 
 --
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -872,7 +1170,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `caja`
 --
 ALTER TABLE `caja`
-  MODIFY `id_caja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_caja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -890,25 +1188,37 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `detalle`
 --
 ALTER TABLE `detalle`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT de la tabla `devolucion`
 --
 ALTER TABLE `devolucion`
-  MODIFY `id_devolucion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_devolucion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT de la tabla `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
+-- AUTO_INCREMENT de la tabla `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `movimiento`
 --
 ALTER TABLE `movimiento`
-  MODIFY `id_movimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `id_movimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
 
 --
 -- AUTO_INCREMENT de la tabla `negocio`
@@ -917,10 +1227,16 @@ ALTER TABLE `negocio`
   MODIFY `id_negocio` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
@@ -938,25 +1254,31 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `servicio_tecnico`
 --
 ALTER TABLE `servicio_tecnico`
-  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio_tecnico_producto`
 --
 ALTER TABLE `servicio_tecnico_producto`
-  MODIFY `id_servicio_tecnico_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_servicio_tecnico_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `transacciones`
 --
 ALTER TABLE `transacciones`
-  MODIFY `id_transacciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id_transacciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Restricciones para tablas volcadas
