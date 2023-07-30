@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-07-2023 a las 08:55:37
+-- Tiempo de generación: 30-07-2023 a las 20:30:31
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -221,7 +221,9 @@ INSERT INTO `detalle` (`id_detalle`, `cantidad`, `valor_unitario`, `id_inventari
 (100, 10, 12, 7, 146, 7, 7, '2023-07-27 23:32:02', '2023-07-27 23:32:02'),
 (102, 3, 12, 7, 148, 7, 7, '2023-07-29 01:41:45', '2023-07-29 01:41:45'),
 (103, 5, 12, 7, 149, 7, 7, '2023-07-29 05:52:34', '2023-07-29 05:52:34'),
-(104, 4, 10, 6, 150, 6, 6, '2023-07-29 06:46:07', '2023-07-29 06:46:07');
+(104, 4, 10, 6, 150, 6, 6, '2023-07-29 06:46:07', '2023-07-29 06:46:07'),
+(105, 1, 12, 7, 151, 7, 7, '2023-07-30 15:17:50', '2023-07-30 15:17:50'),
+(106, 4, 12, 7, 152, 7, 7, '2023-07-30 16:08:24', '2023-07-30 16:08:24');
 
 -- --------------------------------------------------------
 
@@ -306,7 +308,7 @@ INSERT INTO `inventario` (`id_inventario`, `estado_inv`, `cantidad_inventario`, 
 (4, 0, 13, '', 4, NULL, '2023-06-07 09:25:09'),
 (5, 0, 10, '', 5, NULL, '2023-07-10 22:07:12'),
 (6, 0, 90, '', 6, NULL, '2023-07-29 06:46:07'),
-(7, 0, 130, '', 7, NULL, '2023-07-29 05:52:34'),
+(7, 0, 125, '', 7, NULL, '2023-07-30 16:08:24'),
 (8, 1, 12, '', 8, NULL, '2023-06-14 05:56:57'),
 (9, 1, 46, '', 9, NULL, '2023-07-27 21:55:48'),
 (10, 1, 101, '', 10, NULL, '2023-06-05 00:22:55'),
@@ -470,7 +472,9 @@ INSERT INTO `movimiento` (`id_movimiento`, `fecha_mov`, `numero_comprobante`, `t
 (146, '2023-07-27', 1017, 'Salida', 'Venta', 120, 21, '2023-07-27 23:31:59', '2023-07-27 23:31:59', 6, 119, 70, 1),
 (148, '2023-07-28', 1018, 'Salida', 'Venta', 36, 21, '2023-07-29 01:41:42', '2023-07-29 01:41:42', 6, 127, 21, 1),
 (149, '2023-07-29', 1019, 'Salida', 'Venta', 60, 19, '2023-07-29 05:52:31', '2023-07-29 05:52:31', 6, 132, 35, 1),
-(150, '2023-07-29', 1020, 'Salida', 'Venta', 40, 19, '2023-07-29 06:46:05', '2023-07-29 06:46:05', 1, 133, 24, 1);
+(150, '2023-07-29', 1020, 'Salida', 'Venta', 40, 19, '2023-07-29 06:46:05', '2023-07-29 06:46:05', 1, 133, 24, 1),
+(151, '2023-07-30', 1021, 'Salida', 'Venta', 12, 19, '2023-07-30 15:17:48', '2023-07-30 15:17:48', 6, 137, 7, 1),
+(152, '2023-07-30', 1022, 'Salida', 'Venta', 48, 12, '2023-07-30 16:08:21', '2023-07-30 16:08:21', 1, 139, 28, 1);
 
 -- --------------------------------------------------------
 
@@ -925,7 +929,12 @@ INSERT INTO `transacciones` (`id_transacciones`, `tipo_transaccion`, `tipo_pago`
 (131, 'Salida', 'Efectivo', -20, 'Taxis', '2023-07-29 05:50:38', '2023-07-29 05:50:38', '2023-07-29', 'Gasto'),
 (132, 'Entrada', 'Efectivo', 60, 'Venta', '2023-07-29 05:52:24', '2023-07-29 05:52:24', '2023-07-29', 'Venta'),
 (133, 'Entrada', 'Transferencia', 40, 'Venta', '2023-07-29 06:46:00', '2023-07-29 06:46:00', '2023-07-29', 'Venta'),
-(134, 'Entrada', 'Efectivo', 32, 'Servicio Técnico', '2023-07-29 06:51:56', '2023-07-29 06:51:56', '2023-07-29', 'Servicio Técnico');
+(134, 'Entrada', 'Efectivo', 32, 'Servicio Técnico', '2023-07-29 06:51:56', '2023-07-29 06:51:56', '2023-07-29', 'Servicio Técnico'),
+(135, 'Entrada', 'Efectivo', 50, 'Se inicia la actividad del dia', '2023-07-30 15:13:22', '2023-07-30 15:13:22', '2023-07-30', 'MontoInicial'),
+(136, 'Salida', 'Efectivo', -10, '4 desayunos', '2023-07-30 15:16:59', '2023-07-30 15:16:59', '2023-07-30', 'Gasto'),
+(137, 'Entrada', 'Efectivo', 12, 'Venta', '2023-07-30 15:17:43', '2023-07-30 15:17:43', '2023-07-30', 'Venta'),
+(138, 'Entrada', 'Efectivo', 30, 'Se inicia con este dinero', '2023-07-31 15:39:05', '2023-07-31 15:39:05', '2023-07-31', 'MontoInicial'),
+(139, 'Entrada', 'Transferencia', 48, 'Venta', '2023-07-30 16:07:19', '2023-07-30 16:07:19', '2023-07-30', 'Venta');
 
 -- --------------------------------------------------------
 
@@ -1188,7 +1197,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `detalle`
 --
 ALTER TABLE `detalle`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT de la tabla `devolucion`
@@ -1218,7 +1227,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `movimiento`
 --
 ALTER TABLE `movimiento`
-  MODIFY `id_movimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `id_movimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
 
 --
 -- AUTO_INCREMENT de la tabla `negocio`
@@ -1266,7 +1275,7 @@ ALTER TABLE `servicio_tecnico_producto`
 -- AUTO_INCREMENT de la tabla `transacciones`
 --
 ALTER TABLE `transacciones`
-  MODIFY `id_transacciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `id_transacciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
