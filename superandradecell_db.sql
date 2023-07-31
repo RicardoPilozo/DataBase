@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-07-2023 a las 20:30:31
+-- Tiempo de generación: 31-07-2023 a las 04:44:42
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -47,7 +47,9 @@ INSERT INTO `caja` (`id_caja`, `fecha_caja`, `efectivo_final`, `monto_total`, `o
 (7, '2023-07-26', 10, 10, 'Cierre correcto', 0, '2023-07-29 02:49:02', '2023-07-29 02:49:02'),
 (8, '2023-07-28', 36, 36, 'Cierre correcto', 0, '2023-07-29 02:56:14', '2023-07-29 02:56:14'),
 (9, '2023-07-20', 100, 101, 'Sobrante efectivo', 1, '2023-07-29 03:39:21', '2023-07-29 03:39:21'),
-(10, '2023-07-29', 70, 70, 'Cierre correcto', 0, '2023-07-29 06:32:05', '2023-07-29 06:32:05');
+(10, '2023-07-29', 70, 70, 'Cierre correcto', 0, '2023-07-29 06:32:05', '2023-07-29 06:32:05'),
+(14, '2023-07-21', 100, 101, 'Sobrante efectivo', 1, '2023-07-30 21:23:08', '2023-07-30 21:23:08'),
+(17, '2023-07-30', 52, 51, 'Falta efectivo', -1, '2023-07-31 02:43:11', '2023-07-31 02:43:11');
 
 -- --------------------------------------------------------
 
@@ -223,7 +225,8 @@ INSERT INTO `detalle` (`id_detalle`, `cantidad`, `valor_unitario`, `id_inventari
 (103, 5, 12, 7, 149, 7, 7, '2023-07-29 05:52:34', '2023-07-29 05:52:34'),
 (104, 4, 10, 6, 150, 6, 6, '2023-07-29 06:46:07', '2023-07-29 06:46:07'),
 (105, 1, 12, 7, 151, 7, 7, '2023-07-30 15:17:50', '2023-07-30 15:17:50'),
-(106, 4, 12, 7, 152, 7, 7, '2023-07-30 16:08:24', '2023-07-30 16:08:24');
+(106, 4, 12, 7, 152, 7, 7, '2023-07-30 16:08:24', '2023-07-30 16:08:24'),
+(107, 5, 12, 7, 153, 7, 7, '2023-07-28 19:45:16', '2023-07-28 19:45:16');
 
 -- --------------------------------------------------------
 
@@ -308,7 +311,7 @@ INSERT INTO `inventario` (`id_inventario`, `estado_inv`, `cantidad_inventario`, 
 (4, 0, 13, '', 4, NULL, '2023-06-07 09:25:09'),
 (5, 0, 10, '', 5, NULL, '2023-07-10 22:07:12'),
 (6, 0, 90, '', 6, NULL, '2023-07-29 06:46:07'),
-(7, 0, 125, '', 7, NULL, '2023-07-30 16:08:24'),
+(7, 0, 120, '', 7, NULL, '2023-07-28 19:45:17'),
 (8, 1, 12, '', 8, NULL, '2023-06-14 05:56:57'),
 (9, 1, 46, '', 9, NULL, '2023-07-27 21:55:48'),
 (10, 1, 101, '', 10, NULL, '2023-06-05 00:22:55'),
@@ -474,7 +477,8 @@ INSERT INTO `movimiento` (`id_movimiento`, `fecha_mov`, `numero_comprobante`, `t
 (149, '2023-07-29', 1019, 'Salida', 'Venta', 60, 19, '2023-07-29 05:52:31', '2023-07-29 05:52:31', 6, 132, 35, 1),
 (150, '2023-07-29', 1020, 'Salida', 'Venta', 40, 19, '2023-07-29 06:46:05', '2023-07-29 06:46:05', 1, 133, 24, 1),
 (151, '2023-07-30', 1021, 'Salida', 'Venta', 12, 19, '2023-07-30 15:17:48', '2023-07-30 15:17:48', 6, 137, 7, 1),
-(152, '2023-07-30', 1022, 'Salida', 'Venta', 48, 12, '2023-07-30 16:08:21', '2023-07-30 16:08:21', 1, 139, 28, 1);
+(152, '2023-07-30', 1022, 'Salida', 'Venta', 48, 12, '2023-07-30 16:08:21', '2023-07-30 16:08:21', 1, 139, 28, 1),
+(153, '2023-07-28', 1023, 'Salida', 'Venta', 60, 12, '2023-07-28 19:45:13', '2023-07-28 19:45:13', 6, 140, 35, 1);
 
 -- --------------------------------------------------------
 
@@ -934,7 +938,8 @@ INSERT INTO `transacciones` (`id_transacciones`, `tipo_transaccion`, `tipo_pago`
 (136, 'Salida', 'Efectivo', -10, '4 desayunos', '2023-07-30 15:16:59', '2023-07-30 15:16:59', '2023-07-30', 'Gasto'),
 (137, 'Entrada', 'Efectivo', 12, 'Venta', '2023-07-30 15:17:43', '2023-07-30 15:17:43', '2023-07-30', 'Venta'),
 (138, 'Entrada', 'Efectivo', 30, 'Se inicia con este dinero', '2023-07-31 15:39:05', '2023-07-31 15:39:05', '2023-07-31', 'MontoInicial'),
-(139, 'Entrada', 'Transferencia', 48, 'Venta', '2023-07-30 16:07:19', '2023-07-30 16:07:19', '2023-07-30', 'Venta');
+(139, 'Entrada', 'Transferencia', 48, 'Venta', '2023-07-30 16:07:19', '2023-07-30 16:07:19', '2023-07-30', 'Venta'),
+(140, 'Entrada', 'Efectivo', 60, 'Venta', '2023-07-28 19:45:05', '2023-07-28 19:45:05', '2023-07-28', 'Venta');
 
 -- --------------------------------------------------------
 
@@ -1179,7 +1184,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `caja`
 --
 ALTER TABLE `caja`
-  MODIFY `id_caja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_caja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -1197,7 +1202,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `detalle`
 --
 ALTER TABLE `detalle`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT de la tabla `devolucion`
@@ -1227,7 +1232,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `movimiento`
 --
 ALTER TABLE `movimiento`
-  MODIFY `id_movimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
+  MODIFY `id_movimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- AUTO_INCREMENT de la tabla `negocio`
@@ -1275,7 +1280,7 @@ ALTER TABLE `servicio_tecnico_producto`
 -- AUTO_INCREMENT de la tabla `transacciones`
 --
 ALTER TABLE `transacciones`
-  MODIFY `id_transacciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `id_transacciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
