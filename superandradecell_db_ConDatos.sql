@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-08-2023 a las 17:13:25
+-- Tiempo de generación: 04-08-2023 a las 17:52:35
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -72,12 +72,12 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre_cat`, `descripcion_cat`, `estado_cat`, `created_at`, `updated_at`) VALUES
-(1, 'Prueba 3', 'Indefinido', 0, NULL, '2023-07-14 02:19:31'),
+(1, 'Flex de Carga', 'Indefinido', 0, NULL, '2023-07-14 02:19:31'),
 (2, 'Modulos de carga', 'Indefinido', 1, NULL, '2023-06-09 02:02:27'),
 (3, 'Micas de vidrio', 'Indefinido', 1, NULL, '2023-06-09 02:02:35'),
 (4, 'Ping de carga', 'Indefinido', 1, NULL, '2023-06-09 02:02:43'),
-(5, 'Carro', 'Indefinido', 0, NULL, '2023-07-14 02:18:53'),
-(6, 'Prueba XD', 'Esto es una prueba', 0, '2023-06-09 03:00:29', '2023-07-14 02:19:37'),
+(5, 'Audifonos', 'Indefinido', 0, NULL, '2023-07-14 02:18:53'),
+(6, 'Fundas de celular', 'Esto es una prueba', 0, '2023-06-09 03:00:29', '2023-07-14 02:19:37'),
 (7, 'xd', 'DASFDSF', 0, '2023-06-09 03:00:47', '2023-07-14 02:19:48'),
 (8, 'Pepe', 'pepepepeppe', 0, '2023-06-09 03:01:41', '2023-07-14 02:19:23'),
 (9, 'LOL', 'Indefinido', 0, '2023-06-09 03:06:42', '2023-07-14 02:19:17'),
@@ -521,17 +521,12 @@ CREATE TABLE `negocio` (
   `id_negocio` int(11) NOT NULL,
   `nombre_gerente` varchar(150) NOT NULL,
   `apellido_gerente` varchar(150) NOT NULL,
-  `sucursal_negocio` varchar(150) NOT NULL,
+  `cedula_gerente` int(13) NOT NULL,
+  `nombre_negocio` varchar(150) NOT NULL,
+  `ruc_negocio` int(13) NOT NULL,
+  `sucursal_negocio` int(11) NOT NULL,
   `direccion_negocio` varchar(150) NOT NULL,
   `telefono_negocio` varchar(10) NOT NULL,
-  `id_caja` int(11) NOT NULL,
-  `id_servicio` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `id_inventario` int(11) NOT NULL,
-  `id_movimiento` int(11) NOT NULL,
-  `id_devolucion` int(11) NOT NULL,
-  `id_proveedor` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -1151,15 +1146,7 @@ ALTER TABLE `movimiento`
 -- Indices de la tabla `negocio`
 --
 ALTER TABLE `negocio`
-  ADD PRIMARY KEY (`id_negocio`),
-  ADD KEY `id_usuario` (`id_usuario`),
-  ADD KEY `id_servicio` (`id_servicio`),
-  ADD KEY `id_producto` (`id_producto`),
-  ADD KEY `id_inventario` (`id_inventario`),
-  ADD KEY `id_caja` (`id_caja`),
-  ADD KEY `id_devolucion` (`id_devolucion`),
-  ADD KEY `id_movimiento` (`id_movimiento`),
-  ADD KEY `id_proveedor` (`id_proveedor`);
+  ADD PRIMARY KEY (`id_negocio`);
 
 --
 -- Indices de la tabla `password_reset_tokens`
@@ -1383,19 +1370,6 @@ ALTER TABLE `movimiento`
   ADD CONSTRAINT `fk_movimiento_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_movimiento_transacciones` FOREIGN KEY (`id_transacciones`) REFERENCES `transacciones` (`id_transacciones`) ON UPDATE CASCADE,
   ADD CONSTRAINT `movimiento_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `negocio`
---
-ALTER TABLE `negocio`
-  ADD CONSTRAINT `negocio_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `negocio_ibfk_2` FOREIGN KEY (`id_servicio`) REFERENCES `servicio_tecnico` (`id_servicio`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `negocio_ibfk_3` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `negocio_ibfk_4` FOREIGN KEY (`id_inventario`) REFERENCES `inventario` (`id_inventario`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `negocio_ibfk_5` FOREIGN KEY (`id_caja`) REFERENCES `caja` (`id_caja`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `negocio_ibfk_6` FOREIGN KEY (`id_devolucion`) REFERENCES `devolucion` (`id_devolucion`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `negocio_ibfk_7` FOREIGN KEY (`id_movimiento`) REFERENCES `movimiento` (`id_movimiento`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `negocio_ibfk_8` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `producto`
