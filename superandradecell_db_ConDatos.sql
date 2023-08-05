@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-08-2023 a las 17:52:35
+-- Tiempo de generación: 05-08-2023 a las 17:41:41
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -34,6 +34,7 @@ CREATE TABLE `caja` (
   `monto_total` float NOT NULL,
   `observacion_caja` varchar(100) DEFAULT NULL,
   `total_observacion` int(11) DEFAULT NULL,
+  `id_negocio` int(11) DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -42,15 +43,15 @@ CREATE TABLE `caja` (
 -- Volcado de datos para la tabla `caja`
 --
 
-INSERT INTO `caja` (`id_caja`, `fecha_caja`, `efectivo_final`, `monto_total`, `observacion_caja`, `total_observacion`, `created_at`, `updated_at`) VALUES
-(6, '2023-07-27', 100, 100, 'Cierre correcto', 5, '2023-07-29 02:41:30', '2023-07-29 02:41:30'),
-(7, '2023-07-26', 10, 10, 'Cierre correcto', 0, '2023-07-29 02:49:02', '2023-07-29 02:49:02'),
-(8, '2023-07-28', 36, 36, 'Cierre correcto', 0, '2023-07-29 02:56:14', '2023-07-29 02:56:14'),
-(9, '2023-07-20', 100, 101, 'Sobrante efectivo', 1, '2023-07-29 03:39:21', '2023-07-29 03:39:21'),
-(10, '2023-07-29', 70, 70, 'Cierre correcto', 0, '2023-07-29 06:32:05', '2023-07-29 06:32:05'),
-(14, '2023-07-21', 100, 101, 'Sobrante efectivo', 1, '2023-07-30 21:23:08', '2023-07-30 21:23:08'),
-(17, '2023-07-30', 52, 51, 'Falta efectivo', -1, '2023-07-31 02:43:11', '2023-07-31 02:43:11'),
-(21, '2023-08-02', 114, 114, 'Cierre correcto', 0, '2023-08-03 00:58:44', '2023-08-03 00:58:44');
+INSERT INTO `caja` (`id_caja`, `fecha_caja`, `efectivo_final`, `monto_total`, `observacion_caja`, `total_observacion`, `id_negocio`, `created_at`, `updated_at`) VALUES
+(6, '2023-07-27', 100, 100, 'Cierre correcto', 5, 1, '2023-07-29 02:41:30', '2023-07-29 02:41:30'),
+(7, '2023-07-26', 10, 10, 'Cierre correcto', 0, 1, '2023-07-29 02:49:02', '2023-07-29 02:49:02'),
+(8, '2023-07-28', 36, 36, 'Cierre correcto', 0, 1, '2023-07-29 02:56:14', '2023-07-29 02:56:14'),
+(9, '2023-07-20', 100, 101, 'Sobrante efectivo', 1, 1, '2023-07-29 03:39:21', '2023-07-29 03:39:21'),
+(10, '2023-07-29', 70, 70, 'Cierre correcto', 0, 1, '2023-07-29 06:32:05', '2023-07-29 06:32:05'),
+(14, '2023-07-21', 100, 101, 'Sobrante efectivo', 1, 1, '2023-07-30 21:23:08', '2023-07-30 21:23:08'),
+(17, '2023-07-30', 52, 51, 'Falta efectivo', -1, 1, '2023-07-31 02:43:11', '2023-07-31 02:43:11'),
+(21, '2023-08-02', 114, 114, 'Cierre correcto', 0, 1, '2023-08-03 00:58:44', '2023-08-03 00:58:44');
 
 -- --------------------------------------------------------
 
@@ -120,7 +121,8 @@ INSERT INTO `cliente` (`id_cliente`, `nombre_clie`, `apellido_clie`, `cedula_cli
 (5, 'Maria', 'Peralta', '1236598763', '1225447888', 'mariaperalta22@gmail.com', 'Santo Domingo', '2023-06-12 20:09:55', '2023-06-12 20:09:55'),
 (6, 'Consumidor', 'Final', '9999999999', '0000000000', 'xxxxxxxxxxxx@gmail.com', 'XXXXXXXXXX', '2023-06-14 05:50:07', '2023-07-05 02:38:35'),
 (7, 'zzzz', 'aaaaa', '1234569863', '0852698761', 'ricardo@gmail,com', 'la union', '2023-07-13 02:59:57', '2023-07-13 02:59:57'),
-(8, 'Margoth', 'Guaraca', '0603406089', '0999999999', 'margoth@gmail,com', 'Santo Domingo', '2023-08-02 02:22:05', '2023-08-02 02:22:05');
+(8, 'Margoth', 'Guaraca', '0603406089', '0999999999', 'margoth@gmail,com', 'Santo Domingo', '2023-08-02 02:22:05', '2023-08-02 02:22:05'),
+(10, 'Mariela', 'Chila', '0801366261', '0963225632', 'marielachila@gmail.com', 'Santo Domingo', '2023-08-05 03:54:23', '2023-08-05 03:54:23');
 
 -- --------------------------------------------------------
 
@@ -530,6 +532,13 @@ CREATE TABLE `negocio` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `negocio`
+--
+
+INSERT INTO `negocio` (`id_negocio`, `nombre_gerente`, `apellido_gerente`, `cedula_gerente`, `nombre_negocio`, `ruc_negocio`, `sucursal_negocio`, `direccion_negocio`, `telefono_negocio`, `created_at`, `updated_at`) VALUES
+(1, 'Ricardo', 'Pilozo', 854635986, 'Super Andrade Cell', 854635986, 0, 'Santo Domingo', '0987563254', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1023,9 +1032,11 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (6, 'josekk', 'josekk123@gmail.com', NULL, '$2y$10$RkYNeE6LglpZ3XWQRuI/1upXt1hY8j1SMK2V.qZMn2oZt60Je8GKG', NULL, '2023-07-24 03:00:45', '2023-07-24 03:00:45'),
 (7, 'Luis15', 'Luis15@example.com', NULL, '$2y$10$5g0/e9UKjhCzOn0dOqROu.PVqsdwysKBgyrRCd/AtrzA/yBkql3h.', NULL, '2023-07-24 08:02:42', '2023-07-24 08:02:42'),
 (8, 'JosePerez11', 'joseperez11@gmail.com', NULL, '$2y$10$ILScFwR.bzErQgKxwaffeesnm7nKZIgZevc7SpbVLXDbPonsC4iIq', NULL, '2023-07-25 02:07:13', '2023-07-25 02:07:13'),
-(9, 'RicardoPilozo96', 'ricardopilozo96@gmail.com', NULL, '$2y$10$haSIpFzRdg5PI38dLDuHp.qMO7r8WRxhxxhX35AmTlEHP8m2xUOve', NULL, '2023-07-25 02:16:39', '2023-07-25 02:16:39'),
-(11, 'admin', 'admin@example.com', NULL, '$2y$10$HOdCcz79FwueG4ZrWV/6uu9E5CYN.HGYyJpPxQFk51mNnX.y0/IOe', NULL, '2023-07-27 01:13:51', '2023-07-27 01:13:51'),
-(12, 'RaulVelez99', 'raulvelez99@gmail.com', NULL, '$2y$10$.0cZ2Ptv.iEK/ZSLRU80AO1.QO/maXtP95bMYoi3rqcPrbF2bAj5G', NULL, '2023-07-28 00:18:22', '2023-07-28 00:18:22');
+(9, 'RicardoPilozo96', 'ricardopilozo96@gmail.com', NULL, '$2y$10$Fx7jrTshuBU5NpKYRKAUheRH94FECS3Hhb0iK4PfLJ0dhnRh2r3cO', NULL, '2023-07-25 02:16:39', '2023-08-05 03:18:47'),
+(11, 'admin', 'admin@example.com', NULL, '$2y$10$h15cjVXABi5LTmJbb79Vge1AypPks6WTKDfOHAHDvEec8PrdM6/gq', NULL, '2023-07-27 01:13:51', '2023-08-05 03:26:45'),
+(12, 'RaulVelez99', 'raulvelez99@gmail.com', NULL, '$2y$10$.0cZ2Ptv.iEK/ZSLRU80AO1.QO/maXtP95bMYoi3rqcPrbF2bAj5G', NULL, '2023-07-28 00:18:22', '2023-07-28 00:18:22'),
+(13, 'RicarZo', 'ricardo_pilozo@example.com', NULL, '$2y$10$9kPqo7vEnaWUn/tlxylzbOoGx6Ljj6pp0WnmEHkZOGj3WrzvzqhDG', NULL, '2023-08-05 07:38:03', '2023-08-05 07:38:03'),
+(14, 'Jebus', 'jesusandrade@gmail.com', NULL, '$2y$10$qruG2.e7gz5UvW5PNRGvGOLLWh7zEX1ioSRs.QnWpz6ZjKWpqU6ia', NULL, '2023-08-05 08:41:32', '2023-08-05 08:41:32');
 
 -- --------------------------------------------------------
 
@@ -1055,24 +1066,12 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id_usuario`, `usuario`, `password`, `nombre_usu`, `apellido_usu`, `cedula_usu`, `estado_usu`, `email`, `celular_usu`, `id_rol`, `created_at`, `updated_at`) VALUES
 (1, 'Jesus_Andrade', '123456789', 'Deicy', 'Andrade', '2350636441', 1, 'jdac2350636441@gmail.com', '0997264984', 2, NULL, '2023-07-23 21:43:04'),
 (2, 'Dayana_Herrera', '123456789', 'Dayana', 'Herrera', '2325656771', 1, 'dayana2356@gmail.com', '0937568904', 1, NULL, NULL),
-(3, 'RENE', 'RENE', 'RENE', 'PILOZO', '1234567811', 1, 'rene.pilozo@example.com', '0987154320', 1, '2023-05-24 05:05:01', '2023-05-24 05:05:01'),
-(5, 'nuevo usuario', 'nuevo', 'nuevo nombre', 'nuevo Pilozo', '012345607', 1, 'nuevo_email0@example.com', '1234567800', 2, '2023-05-26 05:46:49', '2023-06-30 02:03:14'),
-(6, 'Ricardo', 'Ricardo', 'Ricardo', 'Pilozo', '0850587940', 1, 'ricardo.pilozo2@example.com', '0987154320', 1, '2023-06-30 01:47:02', '2023-06-30 01:47:02'),
-(7, 'Pedro1', '$2y$10$YtfRh1lHImtJ.LMnC6/.memzMVAIAv6KIbYWFkpZr37Hz34YAdHDe', 'Pedro1', 'Pedro1', '0850587911', 1, 'Pedro1.Pedro@example.com', '0987111111', 1, '2023-07-22 21:27:27', '2023-07-22 21:27:27'),
-(8, 'Pedro1', '$2y$10$Xtj7adM3Sd0l12eBl0fLU.9r3TqjVbHOjaAGdOeKUwY1keR28THha', 'Pedro1', 'Pedro1', '0850587922', 1, 'Pedro1.Pedro@example.com', '0987111111', 1, '2023-07-23 06:11:00', '2023-07-23 06:11:00'),
-(9, 'Pedro1', '$2y$10$SrBdTxdLeB.o4Jp7fLEuSum90.YvKoqWb49BznKefv/j5VlMNSww.', 'Pedro1', 'Pedro1', '0850587955', 1, 'Pedro1.Pedro@example.com', '0987111111', 1, '2023-07-23 06:28:17', '2023-07-23 06:28:17'),
-(10, 'Pedro1', '$2y$10$nUt5q3RC7QDRiIt10HMne.78fdZ9CwKYBxkueAsUiPS2XslW9AdY6', 'Pedro1', 'Pedro1', '0850587989', 1, 'Pedro1.Pedro@example.com', '0987111111', 1, '2023-07-23 06:31:41', '2023-07-23 06:31:41'),
-(11, 'Pedro1', '$2y$10$UBFY/J1Cja4FBEIWZV3CVuyGBYba4VY6K0xs/DuxxikwK5OhgOk3W', 'Pedro1', 'Pedro1', '3085058333', 1, 'Pedro1.Pedro@example.com', '0987111111', 1, '2023-07-23 06:33:21', '2023-07-23 06:33:21'),
-(12, 'Pedrito', '$2y$10$lOaj8opMhRr06Xb0R.koCuF2TyH6EZ.SnRpgjtz/30wH04xWzguYq', 'Pedro', 'Perez', '3085058334', 1, 'Pedro13.Pedro@example.com', '0987111111', 1, '2023-07-23 06:38:04', '2023-07-23 20:55:20'),
-(13, 'Luis', '$2y$10$DxLI2ZpYairSQZ.5htQYuOklaOIMb5P8w8o2Jrk6WFAo53Sa6GwKq', 'Luis', 'Luis', '1185058334', 1, 'Luis1@example.com', '0111111111', 1, '2023-07-23 23:58:55', '2023-07-23 23:58:55'),
-(14, 'RicarZo', '$2y$10$dECOAfHd2PyAtzMnC/Rna.Q0VJiqmy44oDH0f9s5YXM8BmBDRzpUS', 'Ricardo', 'Pilozo', '1236599687', 1, 'ricarzo@gmail.com', '1565563251', 1, '2023-07-24 02:55:44', '2023-07-24 02:55:44'),
-(15, 'Luis1', '$2y$10$UcTPECXkeHaPcJ9oUO7FROd6z9CbW.Xe05Tte0gg61fD4SeB4YWuK', 'Luis1', 'Luis1', '1185058314', 1, 'Luis11@example.com', '0121111111', 1, '2023-07-24 02:56:52', '2023-07-24 02:56:52'),
-(16, 'josekk', '$2y$10$adz4i1vZvS2nm37aPkDuKej.BAE8H.jI0q9W.BL2i1Tb1SRFaEk5a', 'jose', 'kkk', '1235698754', 1, 'josekk123@gmail.com', '1635976325', 1, '2023-07-24 03:00:45', '2023-07-24 03:00:45'),
+(12, 'Pedrito', '$2y$10$lOaj8opMhRr06Xb0R.koCuF2TyH6EZ.SnRpgjtz/30wH04xWzguYq', 'Pedro', 'Perez', '3085058334', 1, 'pedro13.pedro@example.com', '0987111111', 1, '2023-07-23 06:38:04', '2023-07-23 20:55:20'),
 (17, 'Luis150', '$2y$10$pFEcKZFFrFpYeehhzYI31OzF/n2k0xomCe/6fzta9cwQJ8ITNScZu', 'Luis15', 'Luis15', '1185058320', 1, 'Luis15@example.com', '0121111110', 1, '2023-07-24 08:02:41', '2023-07-24 03:12:41'),
-(18, 'JosePerez11', '$2y$10$LRGE3zuL7.YOpVBP5.6e0eDYDI.gnbSlk3xSAmnrJxsUIQz/GP3uK', 'Jose', 'Perez', '5698764231', 1, 'joseperez11@gmail.com', '5689775562', 1, '2023-07-25 02:07:13', '2023-07-25 02:07:13'),
-(19, 'RicardoPilozo96', '$2y$10$NGnntT9UC82X/xCyuuTVTeYNSL1OYeEgZ0zxUCIUdJBKryiH9m4My', 'Ricardo', 'Pilozo', '0850587924', 1, 'ricardopilozo96@gmail.com', '2365998764', 2, '2023-07-25 02:16:39', '2023-07-25 02:16:39'),
-(21, 'admin', '$2y$10$tL.uq6POWmTMFyCEwlx92.eJ.xQsPqT7ILDbkdufaWaCzDi8r0Gs.', 'Admin', 'Admin', '1122334455', 1, 'admin@example.com', '1122334455', 1, '2023-07-27 01:13:51', '2023-07-27 01:13:51'),
-(22, 'RaulVelez99', '$2y$10$8k8KjlNZBe.tMfUUT/EH3e/yemL0t9L7DHKZdf9SzaFExT4ACKnxW', 'Raul', 'Velez', '6987695633', 1, 'raulvelez99@gmail.com', '2569897788', 1, '2023-07-28 00:18:22', '2023-07-28 00:18:22');
+(19, 'RicardoPilozo96', '$2y$10$OEknaGRLbxaOW1dYbSqgf.045ZlHGTibV15yuOzGJ495/qs7Hzagy', 'Ricardo', 'Pilozo', '0850587924', 1, 'ricardopilozo96@gmail.com', '2365998764', 2, '2023-07-25 02:16:39', '2023-08-05 03:18:47'),
+(21, 'admin', '$2y$10$..Sck9z9IoaN/cK6zww5geqSL66dr21Bl98Jr5PcrAbZk/lGBHBKm', 'Admin', 'Admin', '1716323355', 1, 'admin@example.com', '0992334455', 1, '2023-07-27 01:13:51', '2023-08-05 03:26:44'),
+(23, 'RicarZo', '$2y$10$AAO6WFrJpuXa/Q3RxIpbYucmbB2r7.EcSDG5ClYSY6FR0aAghTHK2', 'Ricardo', 'Pilozo', '0850587948', 1, 'ricardo_pilozo@example.com', '0987111112', 1, '2023-08-05 07:38:03', '2023-08-05 07:38:03'),
+(24, 'Jebus', '$2y$10$UmS8okZH2tsCFN9KANACGum8KzU5lxHb5bqistJYD/dVg2M.4kihG', 'Jesus', 'Andrade', '1718668732', 1, 'jesusandrade@gmail.com', '0985658796', 1, '2023-08-05 08:41:32', '2023-08-05 08:41:32');
 
 --
 -- Índices para tablas volcadas
@@ -1240,7 +1239,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle`
@@ -1282,7 +1281,7 @@ ALTER TABLE `movimiento`
 -- AUTO_INCREMENT de la tabla `negocio`
 --
 ALTER TABLE `negocio`
-  MODIFY `id_negocio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_negocio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -1330,13 +1329,13 @@ ALTER TABLE `transacciones`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Restricciones para tablas volcadas
