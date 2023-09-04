@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-08-2023 a las 22:37:37
+-- Tiempo de generación: 04-09-2023 a las 02:16:32
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -248,7 +248,13 @@ INSERT INTO `detalle` (`id_detalle`, `cantidad`, `valor_unitario`, `id_inventari
 (127, 16, 1, 25, 171, 25, 0.79, '2023-08-03 23:16:20', '2023-08-03 23:16:20', 1),
 (128, 15, 1, 27, 172, 27, 0.77, '2023-08-03 23:17:34', '2023-08-03 23:17:34', 1),
 (129, 40, 12, 8, 172, 8, 7, '2023-08-03 23:17:35', '2023-08-03 23:17:35', 1),
-(130, 15, 1, 29, 172, 29, 0.75, '2023-08-03 23:17:36', '2023-08-03 23:17:36', 1);
+(130, 15, 1, 29, 172, 29, 0.75, '2023-08-03 23:17:36', '2023-08-03 23:17:36', 1),
+(131, 3, 15, 39, 173, 39, 3, '2023-09-03 22:03:59', '2023-09-03 22:03:59', 1),
+(132, 10, 20, 42, 174, 42, 10, '2023-09-03 23:13:00', '2023-09-03 23:13:00', 1),
+(133, 3, 20, 42, 175, 42, 10, '2023-09-03 23:26:28', '2023-09-03 23:26:28', 1),
+(134, 1, 20, 42, 176, 42, 10, '2023-09-03 23:28:29', '2023-09-03 23:28:29', 1),
+(135, 7, 19, 42, 177, 42, 9, '2023-09-03 23:30:23', '2023-09-03 23:30:23', 1),
+(136, 2, 19, 43, 178, 43, 9, '2023-09-03 23:33:47', '2023-09-03 23:33:47', 1);
 
 -- --------------------------------------------------------
 
@@ -334,11 +340,11 @@ INSERT INTO `inventario` (`id_inventario`, `estado_inv`, `cantidad_inventario`, 
 (2, 0, 120, '', 2, 1, NULL, '2023-06-07 08:25:59'),
 (3, 0, 60, '', 3, 1, NULL, '2023-08-03 21:43:15'),
 (4, 0, 13, '', 4, 1, NULL, '2023-06-07 09:25:09'),
-(5, 0, 100, '', 5, 1, NULL, '2023-08-03 21:51:17'),
-(6, 0, 100, '', 6, 1, NULL, '2023-08-03 22:41:22'),
+(5, 0, 105, '', 5, 1, NULL, '2023-09-03 20:04:04'),
+(6, 0, 111, '', 6, 1, NULL, '2023-09-03 20:10:44'),
 (7, 0, 93, '', 7, 1, NULL, '2023-08-02 22:24:06'),
 (8, 1, 10, '', 8, 1, NULL, '2023-08-03 23:17:36'),
-(9, 1, 62, '', 9, 1, NULL, '2023-08-03 23:04:42'),
+(9, 1, 67, '', 9, 1, NULL, '2023-09-03 19:55:51'),
 (10, 1, 101, '', 10, 1, NULL, '2023-06-05 00:22:55'),
 (11, 1, 30, '', 11, 1, NULL, NULL),
 (12, 1, 18, '', 12, 1, NULL, NULL),
@@ -368,9 +374,11 @@ INSERT INTO `inventario` (`id_inventario`, `estado_inv`, `cantidad_inventario`, 
 (36, 0, 12, '11111111', 36, 1, '2023-06-05 23:20:05', '2023-06-10 20:27:40'),
 (37, 0, 200, 'adfdsfadsfdsf', 37, 1, '2023-06-09 03:48:22', '2023-06-10 20:27:47'),
 (38, 1, 96, 'sadasd', 38, 1, '2023-06-27 04:04:26', '2023-07-02 04:38:21'),
-(39, 1, 10, 'dgdfgfd', 39, 1, NULL, '2023-08-03 23:12:57'),
+(39, 1, 84, 'dgdfgfd', 39, 1, NULL, '2023-09-03 22:12:25'),
 (40, 1, 150, 'sdasdsad', 40, 1, '2023-07-25 01:06:51', '2023-07-25 01:06:51'),
-(41, 1, 200, 'afdsfsadf', 41, 1, '2023-07-27 17:05:36', '2023-07-27 17:05:36');
+(41, 1, 200, 'afdsfsadf', 41, 1, '2023-07-27 17:05:36', '2023-07-27 17:05:36'),
+(42, 1, 22, 'A1QWERTY', 42, 1, '2023-09-03 23:11:29', '2023-09-03 23:30:23'),
+(43, 1, 108, 'aa1zx', 43, 1, '2023-09-03 23:32:47', '2023-09-03 23:36:01');
 
 -- --------------------------------------------------------
 
@@ -516,7 +524,13 @@ INSERT INTO `movimiento` (`id_movimiento`, `fecha_mov`, `numero_comprobante`, `t
 (169, '2023-08-03', 1033, 'Salida', 'Venta', 4, 12, '2023-08-03 22:46:16', '2023-08-03 22:46:16', 6, 174, 1, 2.4, 1),
 (170, '2023-08-03', 1034, 'Salida', 'Venta', 750, 12, '2023-08-03 23:12:54', '2023-08-03 23:12:54', 6, 175, 1, 150, 1),
 (171, '2023-08-03', 1035, 'Salida', 'Venta', 16, 12, '2023-08-03 23:16:17', '2023-08-03 23:16:17', 6, 176, 1, 12.64, 1),
-(172, '2023-08-03', 1036, 'Salida', 'Venta', 510, 12, '2023-08-03 23:17:30', '2023-08-03 23:17:30', 6, 177, 1, 302.8, 1);
+(172, '2023-08-03', 1036, 'Salida', 'Venta', 510, 12, '2023-08-03 23:17:30', '2023-08-03 23:17:30', 6, 177, 1, 302.8, 1),
+(173, '2023-09-03', 1037, 'Salida', 'Venta', 45, 21, '2023-09-03 22:03:56', '2023-09-03 22:03:56', 1, 191, 1, 9, 1),
+(174, '2023-09-03', 1038, 'Salida', 'Venta', 200, 21, '2023-09-03 23:12:58', '2023-09-03 23:12:58', 1, 193, 1, 100, 1),
+(175, '2023-09-03', 1039, 'Salida', 'Venta', 60, 21, '2023-09-03 23:26:25', '2023-09-03 23:26:25', 1, 195, 1, 30, 1),
+(176, '2023-09-03', 1040, 'Salida', 'Venta', 20, 21, '2023-09-03 23:28:27', '2023-09-03 23:28:27', 1, 197, 1, 10, 1),
+(177, '2023-09-03', 1041, 'Salida', 'Venta', 133, 21, '2023-09-03 23:30:21', '2023-09-03 23:30:21', 1, 198, 1, 63, 1),
+(178, '2023-09-03', 1042, 'Salida', 'Venta', 38, 21, '2023-09-03 23:33:44', '2023-09-03 23:33:44', 1, 199, 1, 18, 1);
 
 -- --------------------------------------------------------
 
@@ -649,7 +663,9 @@ INSERT INTO `producto` (`id_producto`, `nombre_producto`, `precio_compra`, `prec
 (38, 'ASD', 1, 2, 3, 4, 5, 'HHN1', 'Sandsad', 'Cargador', 'HHN1', 'adfdsfadsfdsf', 0, 2, 15, 1, '2023-06-09 03:48:22', '2023-06-10 20:27:47'),
 (39, 'abc', 12, 15, 17, 13, 5.5, 'FC-000009', 'abc', 'abc', 'FC-000009', 'sadasd', 1, 3, 5, 1, '2023-06-27 04:04:26', '2023-06-27 04:04:59'),
 (40, 'Prueba1996', 5, 9, 8, 7, 6, 'Prueba', 'Prueba1996', 'Prueba1996', 'Prueba', 'sdasdsad', 1, 6, 3, 1, '2023-07-25 01:06:51', '2023-07-25 01:06:51'),
-(41, 'ProductoX', 1, 5, 4, 3, 2, '0001', 'asdfadsf', 'afadf', '0001', 'afdsfsadf', 1, 2, 3, 1, '2023-07-27 17:05:36', '2023-07-27 17:05:36');
+(41, 'ProductoX', 1, 5, 4, 3, 2, '0001', 'asdfadsf', 'afadf', '0001', 'afdsfsadf', 1, 2, 3, 1, '2023-07-27 17:05:36', '2023-07-27 17:05:36'),
+(42, 'A1QWERTY', 10, 20, 19, 17, 18, 'A1QWERTY', 'A1QWERTY', 'A1QWERTY', 'A1QWERTY', 'A1QWERTY', 1, 3, 2, 1, '2023-09-03 23:11:29', '2023-09-03 23:11:29'),
+(43, 'aa1zx', 10, 19, 18, 16, 17, 'aa1zx', 'aa1zx', 'aa1zx', 'aa1zx', 'aa1zx', 1, 3, 2, 1, '2023-09-03 23:32:47', '2023-09-03 23:32:47');
 
 -- --------------------------------------------------------
 
@@ -776,7 +792,9 @@ INSERT INTO `servicio_tecnico` (`id_servicio`, `fecha_ingreso_serv`, `fecha_sali
 (40, '2023-07-28', '2023-07-28', 35, 'Se arregla celular Samsung A20s sin repuesto', 0, 30, 0, 30, 21, '2023-07-29 01:23:52', '2023-07-29 01:23:52', 6, 126, 0, 1),
 (41, '2023-07-29', '2023-07-29', 36, 'Se genero una reparación de celular si repuesto', 1, 32, 0, 32, 19, '2023-07-29 06:52:00', '2023-07-29 06:52:00', 6, 134, 0, 1),
 (42, '2023-07-31', '2023-07-31', 37, 'Cambio de Mica', 1, 4, 1, 5, 21, '2023-07-31 16:16:04', '2023-07-31 16:16:04', 6, 146, 0.77, 1),
-(43, '2023-12-28', '2023-12-28', 38, 'reparacion mas repuesto', 1, 10, 12, 22, 21, '2023-12-29 00:27:12', '2023-12-29 00:27:12', 6, 147, 7, 1);
+(43, '2023-12-28', '2023-12-28', 38, 'reparacion mas repuesto', 1, 10, 12, 22, 21, '2023-12-29 00:27:12', '2023-12-29 00:27:12', 6, 147, 7, 1),
+(49, '2023-09-03', '2023-09-03', 39, 'ABC', 1, 10, 495, 505, 21, '2023-09-03 22:12:23', '2023-09-03 22:12:23', 1, 192, 99, 1),
+(50, '2023-09-03', '2023-09-03', 40, 'Se arregla', 1, 20, 5400, 5420, 21, '2023-09-03 23:14:37', '2023-09-03 23:14:37', 1, 194, 2700, 1);
 
 -- --------------------------------------------------------
 
@@ -828,7 +846,47 @@ INSERT INTO `servicio_tecnico_producto` (`id_servicio_tecnico_producto`, `cantid
 (28, 2, 15, 39, 32, 39, '2023-07-27 15:28:51', '2023-07-27 15:28:51', 3),
 (29, 2, 12, 7, 38, 7, '2023-07-28 01:26:23', '2023-07-28 01:26:23', 7),
 (30, 1, 1, 27, 42, 27, '2023-07-31 16:16:05', '2023-07-31 16:16:05', 0.77),
-(31, 1, 12, 7, 43, 7, '2023-12-29 00:27:13', '2023-12-29 00:27:13', 7);
+(31, 1, 12, 7, 43, 7, '2023-12-29 00:27:13', '2023-12-29 00:27:13', 7),
+(36, 33, 15, 39, 49, 39, '2023-09-03 22:12:25', '2023-09-03 22:12:25', 3),
+(37, 270, 20, 42, 50, 42, '2023-09-03 23:14:39', '2023-09-03 23:14:39', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `stockdiario`
+--
+
+CREATE TABLE `stockdiario` (
+  `id_stockDiario` int(11) NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `razon` varchar(200) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `stockdiario`
+--
+
+INSERT INTO `stockdiario` (`id_stockDiario`, `id_producto`, `cantidad`, `fecha`, `razon`, `updated_at`, `created_at`) VALUES
+(1, 39, 50, '2023-03-27', 'IngresoStock', '2023-09-03 17:02:04', '2023-09-03 16:13:36'),
+(2, 38, 50, '2023-03-27', 'IngresoStock', '2023-09-03 17:02:09', '2023-09-03 16:20:52'),
+(3, 38, 10, '2023-03-27', 'IngresoStock', '2023-09-03 17:07:37', '2023-09-03 17:07:37'),
+(4, 38, 20, '2023-03-27', 'IngresoStock', '2023-09-03 17:07:47', '2023-09-03 17:07:47'),
+(5, 38, 50, '2023-03-28', 'IngresoStock', '2023-09-03 17:07:58', '2023-09-03 17:07:58'),
+(6, 38, 50, '2023-03-28', 'IngresoStock', '2023-09-03 19:48:20', '2023-09-03 19:48:20'),
+(7, 38, 50, '2023-03-28', 'IngresoStock', '2023-09-03 20:00:00', '2023-09-03 20:00:00'),
+(8, 39, 10, '2023-09-03', 'IngresoStock', '2023-09-03 20:09:36', '2023-09-03 20:09:36'),
+(9, 6, 10, '2023-09-03', 'IngresoStock', '2023-09-03 20:10:46', '2023-09-03 20:10:46'),
+(10, 39, 3, '2023-09-03', 'IngresoStock', '2023-09-03 20:11:40', '2023-09-03 20:11:40'),
+(11, 39, 66, '2023-09-03', 'IngresoStock', '2023-09-03 21:18:20', '2023-09-03 21:18:20'),
+(12, 42, 300, '2023-09-03', 'IngresoStock', '2023-09-03 23:11:30', '2023-09-03 23:11:30'),
+(13, 42, 13, '2023-09-03', 'IngresoStock', '2023-09-03 23:27:19', '2023-09-03 23:27:19'),
+(14, 42, 7, '2023-09-03', 'SalidaStock', '2023-09-03 23:30:25', '2023-09-03 23:30:25'),
+(16, 43, 2, '2023-09-03', 'SalidaStock', '2023-09-03 23:33:48', '2023-09-03 23:33:48'),
+(17, 43, 100, '2023-08-03', 'IngresoStock', '2023-09-03 23:42:07', '2023-09-03 23:36:03');
 
 -- --------------------------------------------------------
 
@@ -1010,7 +1068,30 @@ INSERT INTO `transacciones` (`id_transacciones`, `tipo_transaccion`, `tipo_pago`
 (174, 'Entrada', 'Transferencia', 4, 'Venta', '2023-08-03 22:46:12', '2023-08-03 22:46:12', '2023-08-03', 'Venta', 1, 1),
 (175, 'Entrada', 'Transferencia', 750, 'Venta', '2023-08-03 23:12:49', '2023-08-03 23:12:49', '2023-08-03', 'Venta', 1, 1),
 (176, 'Entrada', 'Transferencia', 16, 'Venta', '2023-08-03 23:16:12', '2023-08-03 23:16:12', '2023-08-03', 'Venta', 1, 1),
-(177, 'Entrada', 'Transferencia', 510, 'Venta', '2023-08-03 23:17:22', '2023-08-03 23:17:22', '2023-08-03', 'Venta', 1, 1);
+(177, 'Entrada', 'Transferencia', 510, 'Venta', '2023-08-03 23:17:22', '2023-08-03 23:17:22', '2023-08-03', 'Venta', 1, 1),
+(178, 'Entrada', 'Efectivo', 12, 'Compra de producto abc', '2023-09-03 15:01:04', '2023-09-03 15:01:04', '2023-09-03', 'CompraProducto', 1, 1),
+(179, 'Entrada', 'Efectivo', 60, 'Compra de producto abc', '2023-09-03 15:02:22', '2023-09-03 15:02:22', '2023-09-03', 'CompraProducto', 1, 1),
+(180, 'Entrada', 'Efectivo', 120, 'Compra de producto abc', '2023-09-03 19:54:22', '2023-09-03 19:54:22', '2023-09-03', 'CompraProducto', 1, 1),
+(181, 'Entrada', 'Efectivo', 30, 'Compra de producto Flex de carga Samsun A10', '2023-09-03 19:55:50', '2023-09-03 19:55:50', '2023-09-03', 'CompraProducto', 1, 1),
+(182, 'Entrada', 'Efectivo', 4, 'Compra de producto Flex de carga Samsun A20', '2023-09-03 19:57:24', '2023-09-03 19:57:24', '2023-09-03', 'CompraProducto', 1, 1),
+(183, 'Entrada', 'Efectivo', 30, 'Compra de producto Flex de carga Samsun A70', '2023-09-03 20:04:02', '2023-09-03 20:04:02', '2023-09-03', 'CompraProducto', 1, 1),
+(184, 'Entrada', 'Efectivo', 60, 'Compra de producto abc', '2023-09-03 20:05:05', '2023-09-03 20:05:05', '2023-09-03', 'CompraProducto', 1, 1),
+(185, 'Entrada', 'Efectivo', 120, 'Compra de producto abc', '2023-09-03 20:06:23', '2023-09-03 20:06:23', '2023-09-03', 'CompraProducto', 1, 1),
+(186, 'Entrada', 'Efectivo', 120, 'Compra de producto abc', '2023-09-03 20:09:33', '2023-09-03 20:09:33', '2023-09-03', 'CompraProducto', 1, 1),
+(187, 'Entrada', 'Efectivo', 40, 'Compra de producto Flex de carga Samsun A20', '2023-09-03 20:10:43', '2023-09-03 20:10:43', '2023-09-03', 'CompraProducto', 1, 1),
+(188, 'Entrada', 'Efectivo', 36, 'Compra de producto abc', '2023-09-03 20:11:37', '2023-09-03 20:11:37', '2023-09-03', 'CompraProducto', 1, 1),
+(189, 'Entrada', 'Efectivo', 792, 'Compra de producto abc', '2023-09-03 21:18:17', '2023-09-03 21:18:17', '2023-09-03', 'CompraProducto', 1, 1),
+(190, 'Entrada', 'Efectivo', 50, 'Se inicio con 50 dolares', '2023-09-03 22:03:26', '2023-09-03 22:03:26', '2023-09-03', 'MontoInicial', 1, 1),
+(191, 'Entrada', 'Transferencia', 45, 'Venta', '2023-09-03 22:03:52', '2023-09-03 22:03:52', '2023-09-03', 'Venta', 1, 1),
+(192, 'Entrada', 'Transferencia', 505, 'Servicio Técnico', '2023-09-03 22:12:20', '2023-09-03 22:12:20', '2023-09-03', 'Servicio Técnico', 1, 1),
+(193, 'Entrada', 'Efectivo', 200, 'Venta', '2023-09-03 23:12:52', '2023-09-03 23:12:52', '2023-09-03', 'Venta', 1, 1),
+(194, 'Entrada', 'Transferencia', 5420, 'Servicio Técnico', '2023-09-03 23:14:33', '2023-09-03 23:14:33', '2023-09-03', 'Servicio Técnico', 1, 1),
+(195, 'Entrada', 'Efectivo', 60, 'Venta', '2023-09-03 23:26:21', '2023-09-03 23:26:21', '2023-09-03', 'Venta', 1, 1),
+(196, 'Entrada', 'Efectivo', 130, 'Compra de producto A1QWERTY', '2023-09-03 23:27:16', '2023-09-03 23:27:16', '2023-09-03', 'CompraProducto', 1, 1),
+(197, 'Entrada', 'Transferencia', 20, 'Venta', '2023-09-03 23:28:22', '2023-09-03 23:28:22', '2023-09-03', 'Venta', 1, 1),
+(198, 'Entrada', 'Efectivo', 133, 'Venta', '2023-09-03 23:30:15', '2023-09-03 23:30:15', '2023-09-03', 'Venta', 1, 1),
+(199, 'Entrada', 'Transferencia', 38, 'Venta', '2023-09-03 23:33:40', '2023-09-03 23:33:40', '2023-09-03', 'Venta', 1, 1),
+(200, 'Entrada', 'Efectivo', 100, 'Compra de producto aa1zx', '2023-09-03 23:36:00', '2023-09-03 23:36:00', '2023-09-03', 'CompraProducto', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1220,6 +1301,13 @@ ALTER TABLE `servicio_tecnico_producto`
   ADD KEY `fk_servicio_tecnico_producto_inventario` (`id_inventario`);
 
 --
+-- Indices de la tabla `stockdiario`
+--
+ALTER TABLE `stockdiario`
+  ADD PRIMARY KEY (`id_stockDiario`),
+  ADD KEY `fk_stockDiario_producto` (`id_producto`);
+
+--
 -- Indices de la tabla `transacciones`
 --
 ALTER TABLE `transacciones`
@@ -1267,7 +1355,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `detalle`
 --
 ALTER TABLE `detalle`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
 -- AUTO_INCREMENT de la tabla `devolucion`
@@ -1285,7 +1373,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -1297,7 +1385,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `movimiento`
 --
 ALTER TABLE `movimiento`
-  MODIFY `id_movimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `id_movimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
 
 --
 -- AUTO_INCREMENT de la tabla `negocio`
@@ -1315,7 +1403,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
@@ -1333,19 +1421,25 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `servicio_tecnico`
 --
 ALTER TABLE `servicio_tecnico`
-  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio_tecnico_producto`
 --
 ALTER TABLE `servicio_tecnico_producto`
-  MODIFY `id_servicio_tecnico_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_servicio_tecnico_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT de la tabla `stockdiario`
+--
+ALTER TABLE `stockdiario`
+  MODIFY `id_stockDiario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `transacciones`
 --
 ALTER TABLE `transacciones`
-  MODIFY `id_transacciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
+  MODIFY `id_transacciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -1443,6 +1537,12 @@ ALTER TABLE `servicio_tecnico_producto`
   ADD CONSTRAINT `fk_servicio_tecnico_producto_inventario` FOREIGN KEY (`id_inventario`) REFERENCES `inventario` (`id_inventario`),
   ADD CONSTRAINT `fk_servicio_tecnico_producto_producto` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`),
   ADD CONSTRAINT `fk_servicio_tecnico_producto_servicio` FOREIGN KEY (`id_servicio`) REFERENCES `servicio_tecnico` (`id_servicio`);
+
+--
+-- Filtros para la tabla `stockdiario`
+--
+ALTER TABLE `stockdiario`
+  ADD CONSTRAINT `fk_stockDiario_producto` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `transacciones`
